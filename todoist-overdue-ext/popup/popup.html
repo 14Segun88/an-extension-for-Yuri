@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Todoist Overdue Notifier</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <h1>Todoist Overdue</h1>
+
+    <div class="status-row">
+      <span id="bot-status" class="status-badge">Бот: ВЫКЛ</span>
+    </div>
+
+    <div class="info-row">
+      <span class="label">Следующий скан:</span>
+      <span id="next-run" class="value">—</span>
+    </div>
+
+    <div class="info-row">
+      <span class="label">Последний скан:</span>
+      <span id="last-run" class="value">—</span>
+    </div>
+
+    <div class="info-row">
+      <span class="label">Результат:</span>
+      <span id="last-result" class="value">—</span>
+    </div>
+
+    <button id="toggle-bot" type="button" class="btn-primary">Старт</button>
+    <button id="run-now" type="button" class="btn-secondary">Запустить сейчас</button>
+    <button id="open-options" type="button" class="btn-secondary">Открыть настройки</button>
+
+    <div class="log-section">
+      <h2>Журнал</h2>
+      <div id="log-container" class="log-container"></div>
+    </div>
+  </main>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

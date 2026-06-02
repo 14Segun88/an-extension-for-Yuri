@@ -1,0 +1,150 @@
+:root {
+  --fg: #1f2328;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --accent: #2563eb;
+  --success: #16a34a;
+  --error: #dc2626;
+  --border: #d1d5db;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-width: 300px;
+}
+
+main {
+  padding: 12px 14px;
+}
+
+h1 {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+h2 {
+  font-size: 12px;
+  margin: 12px 0 6px;
+  color: var(--muted);
+}
+
+.status-row {
+  margin-bottom: 10px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  background: #f3f4f6;
+  color: var(--muted);
+}
+
+.status-badge.enabled {
+  background: #dcfce7;
+  color: var(--success);
+}
+
+.status-badge.disabled {
+  background: #fee2e2;
+  color: var(--error);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.label {
+  color: var(--muted);
+}
+
+.value {
+  font-weight: 500;
+}
+
+button {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 6px;
+}
+
+button:hover {
+  background: #f3f4f6;
+}
+
+button:active {
+  background: #e5e7eb;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.log-section {
+  margin-top: 12px;
+}
+
+.log-container {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 11px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  background: #f9fafb;
+}
+
+.log-entry {
+  padding: 2px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-entry.info { color: var(--fg); }
+.log-entry.warn { color: #f59e0b; }
+.log-entry.error { color: var(--error); }
+
+.log-ts {
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.log-source {
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.log-msg {
+  word-break: break-word;
+}

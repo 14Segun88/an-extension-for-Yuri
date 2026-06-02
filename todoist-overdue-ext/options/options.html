@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Настройки — Todoist Overdue Notifier</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <main>
+    <h1>Todoist Overdue Notifier — настройки</h1>
+
+    <section class="section">
+      <h2>Подключения</h2>
+      <div class="field">
+        <label for="todoist-token">Todoist API token</label>
+        <input id="todoist-token" type="password" placeholder="Вставьте токен из Todoist" />
+        <button id="test-todoist" type="button" class="btn-secondary">Проверить Todoist</button>
+        <span id="todoist-status" class="status"></span>
+      </div>
+      <div class="field">
+        <label for="brevo-api-key">Brevo API key</label>
+        <input id="brevo-api-key" type="password" placeholder="Вставьте ключ из Brevo" />
+        <button id="test-brevo" type="button" class="btn-secondary">Проверить Brevo</button>
+        <span id="brevo-status" class="status"></span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Расписание</h2>
+      <div class="field">
+        <label for="scan-time">Время скана (МСК)</label>
+        <input id="scan-time" type="time" value="09:00" />
+        <span id="next-run-display" class="hint"></span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Отправка</h2>
+      <div class="field">
+        <label for="sender-email">Sender email (подтверждён в Brevo)</label>
+        <input id="sender-email" type="email" placeholder="loftglam@gmail.com" />
+      </div>
+      <div class="field">
+        <label for="sender-name">Sender name</label>
+        <input id="sender-name" type="text" placeholder="Todoist Overdue Bot" />
+      </div>
+      <div class="field">
+        <label for="recipients">Recipients (по одному email на строку)</label>
+        <textarea id="recipients" rows="4" placeholder="loftglam@gmail.com&#10;elephant1047@gmail.com"></textarea>
+        <span id="recipients-hint" class="hint"></span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Действия</h2>
+      <div class="actions">
+        <button id="run-now" type="button">Запустить скан сейчас</button>
+        <button id="send-test-email" type="button" class="btn-secondary">Отправить тестовое письмо себе</button>
+      </div>
+      <div id="action-status" class="status"></div>
+    </section>
+
+    <section class="section">
+      <h2>Журнал</h2>
+      <div class="log-controls">
+        <select id="log-filter">
+          <option value="all">Все</option>
+          <option value="info">Info</option>
+          <option value="warn">Warn</option>
+          <option value="error">Error</option>
+        </select>
+        <button id="log-refresh" type="button" class="btn-secondary">Обновить</button>
+        <button id="log-clear" type="button" class="btn-secondary">Очистить</button>
+        <button id="log-export" type="button" class="btn-secondary">Экспорт .txt</button>
+      </div>
+      <div id="log-container" class="log-container"></div>
+    </section>
+
+    <div class="save-bar">
+      <button id="save" type="button">Сохранить настройки</button>
+      <span id="save-status" class="status"></span>
+    </div>
+  </main>
+  <script src="options.js" type="module"></script>
+</body>
+</html>

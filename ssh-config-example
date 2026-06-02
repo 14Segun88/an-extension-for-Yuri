@@ -1,0 +1,12 @@
+cd ~/CascadeProjects/Расширение\ для\ Юрия
+chmod +x setup-wsl-ssh.sh
+./setup-wsl-ssh.sh# SSH конфигурация для подключения к WSL
+# Разместите в: C:\Users\ВашИмя\.ssh\config
+
+Host wsl
+    HostName 127.0.0.1
+    Port 2222
+    User segun
+    IdentityFile ~/.ssh/id_rsa
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null

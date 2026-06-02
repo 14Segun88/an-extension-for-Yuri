@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Todoist Overdue Notifier",
+  "version": "0.1.0",
+  "description": "Сканирует Todoist на просроченные задачи и шлёт уведомления сотрудникам через Brevo.",
+  "permissions": [
+    "alarms",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://api.todoist.com/*",
+    "https://api.brevo.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Todoist Overdue Notifier",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}
