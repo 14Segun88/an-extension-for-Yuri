@@ -8,8 +8,12 @@ const els = {
   todoistToken: document.getElementById('todoist-token'),
   brevoApiKey: document.getElementById('brevo-api-key'),
   scanTime: document.getElementById('scan-time'),
+  scanOverdue: document.getElementById('scan-overdue'),
+  scanNoDueDate: document.getElementById('scan-no-due-date'),
+  scanNoResponsible: document.getElementById('scan-no-responsible'),
   senderEmail: document.getElementById('sender-email'),
   senderName: document.getElementById('sender-name'),
+  replyToEmail: document.getElementById('reply-to-email'),
   recipients: document.getElementById('recipients'),
   nextRunDisplay: document.getElementById('next-run-display'),
   todoistStatus: document.getElementById('todoist-status'),
@@ -19,6 +23,9 @@ const els = {
   recipientsHint: document.getElementById('recipients-hint'),
   logFilter: document.getElementById('log-filter'),
   logContainer: document.getElementById('log-container'),
+  checkBrevoAccount: document.getElementById('check-brevo-account'),
+  addTodoistComments: document.getElementById('add-todoist-comments'),
+  commentAuthorEmail: document.getElementById('comment-author-email'),
 };
 
 // Валидация email
@@ -56,7 +63,19 @@ async function loadSettings() {
     els.scanTime.value = settings.scanTime || DEFAULTS.scanTime;
     els.senderEmail.value = settings.senderEmail || DEFAULTS.senderEmail;
     els.senderName.value = settings.senderName || DEFAULTS.senderName;
+    els.replyToEmail.value = settings.replyToEmail || '';
     els.recipients.value = formatRecipients(settings.recipients || []);
+    
+    // Загрузка типов сканирования
+    const scanTypes = settings.scanTypes || DEFAULTS.scanTypes;
+    els.scanOverdue.checked = scanTypes.includes('overdue');
+    els.scanNoDueDate.checked = scanTypes.includes('noDueDate');
+    els.scanNoResponsible.checked = scanTypes.includes('noResponsible');
+    
+    // Загрузка настроек комментариев
+    els.addTodoistComments.checked = settings.addTodoistComments || false;
+    els.commentAuthorEmail.value = settings.commentAuthorEmail || '';
+    
     updateNextRunDisplay(settings.scanTime);
     validateRecipients();
   } catch (e) {
@@ -120,17 +139,44 @@ async function saveSettings() {
       setStatus(els.saveStatus, 'Невалидный sender email', 'error');
       return;
     }
+    // Валидация replyToEmail (если указан)
+    const replyToEmail = els.replyToEmail.value.trim();
+    if (replyToEmail && !isValidEmail(replyToEmail)) {
+      setStatus(els.saveStatus, 'Невалидный Reply-To email', 'error');
+      return;
+    }
+    // Валидация commentAuthorEmail (если включены комментарии)
+    const commentAuthorEmail = els.commentAuthorEmail.value.trim();
+    if (els.addTodoistComments.checked && commentAuthorEmail && !isValidEmail(commentAuthorEmail)) {
+      setStatus(els.saveStatus, 'Невалидный email автора комментариев', 'error');
+      return;
+    }
+    // Сбор типов сканирования
+    const scanTypes = [];
+    if (els.scanOverdue.checked) scanTypes.push('overdue');
+    if (els.scanNoDueDate.checked) scanTypes.push('noDueDate');
+    if (els.scanNoResponsible.checked) scanTypes.push('noResponsible');
+    
+    if (scanTypes.length === 0) {
+      setStatus(els.saveStatus, 'Выберите хотя бы один тип сканирования', 'error');
+      return;
+    }
+    
     await storage.setMany({
       todoistToken: els.todoistToken.value.trim(),
       brevoApiKey: els.brevoApiKey.value.trim(),
       scanTime: els.scanTime.value,
       senderEmail: els.senderEmail.value.trim(),
       senderName: els.senderName.value.trim(),
+      replyToEmail,
       recipients,
+      scanTypes,
+      addTodoistComments: els.addTodoistComments.checked,
+      commentAuthorEmail,
     });
     updateNextRunDisplay(els.scanTime.value);
     setStatus(els.saveStatus, 'Сохранено', 'ok');
-    await logger.info('options', 'Настройки сохранены');
+    await logger.info('options', 'Настройки сохранены', { scanTypes, addTodoistComments: els.addTodoistComments.checked });
   } catch (e) {
     console.error('[options] saveSettings error:', e);
     setStatus(els.saveStatus, 'Ошибка сохранения', 'error');
@@ -146,9 +192,7 @@ async function testTodoist() {
   }
   try {
     setStatus(els.todoistStatus, 'Проверка...', 'ok');
-    const response = await fetch('https://api.todoist.com/rest/v2/projects', {
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
+    const response = await fetch(`https://api.todoist.com/api/v1/projects?token=${token}`);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -170,7 +214,7 @@ async function testBrevo() {
   }
   try {
     setStatus(els.brevoStatus, 'Проверка...', 'ok');
-    const response = await fetch('https://api.brevo.com/v3/account', {
+    const response = await fetch('http://127.0.0.1:8787/v3/account', {
       headers: { 'api-key': apiKey },
     });
     if (!response.ok) {
@@ -185,6 +229,57 @@ async function testBrevo() {
     console.error('[Brevo Test] Error:', e);
     setStatus(els.brevoStatus, `Ошибка: ${e.message}`, 'error');
     await logger.error('options', 'Brevo тест не пройден', { error: e.message });
+  }
+}
+
+// Проверка аккаунта Brevo с лимитами
+async function checkBrevoAccount() {
+  const apiKey = els.brevoApiKey.value.trim();
+  if (!apiKey) {
+    setStatus(els.brevoStatus, 'Введите ключ', 'error');
+    return;
+  }
+  try {
+    setStatus(els.brevoStatus, 'Проверка аккаунта...', 'ok');
+    const response = await chrome.runtime.sendMessage({ type: 'CHECK_BREVO_ACCOUNT', brevoApiKey: apiKey });
+    
+    if (response?.ok && response?.data) {
+      const { account, stats } = response.data;
+      let statusText = `OK (${account.email})`;
+      
+      if (stats) {
+        statusText += ` | Сегодня: ${stats.requests} запросов, ${stats.delivered} доставлено`;
+        if (stats.bounces > 0) {
+          statusText += `, ${stats.bounces} ошибок`;
+        }
+      }
+      
+      setStatus(els.brevoStatus, statusText, 'ok');
+      await logger.info('options', 'Аккаунт Brevo проверен', { account, stats });
+      
+      // Показываем детальную информацию в alert
+      const details = `
+Аккаунт Brevo:
+Email: ${account.email}
+План: ${account.plan?.type || 'Неизвестно'}
+Компания: ${account.companyName || 'Не указана'}
+
+Статистика за сегодня:
+Запросов: ${stats?.requests || 0}
+Доставлено: ${stats?.delivered || 0}
+Открыто: ${stats?.opens || 0}
+Кликов: ${stats?.clicks || 0}
+Ошибок: ${stats?.bounces || 0}
+      `;
+      alert(details.trim());
+    } else {
+      setStatus(els.brevoStatus, `Ошибка: ${response?.error}`, 'error');
+      await logger.error('options', 'Ошибка проверки аккаунта Brevo', { error: response?.error });
+    }
+  } catch (e) {
+    console.error('[Brevo Account Check] Error:', e);
+    setStatus(els.brevoStatus, `Ошибка: ${e.message}`, 'error');
+    await logger.error('options', 'Ошибка проверки аккаунта Brevo', { error: e.message });
   }
 }
 
@@ -208,7 +303,10 @@ async function runNow() {
 async function sendTestEmail() {
   try {
     setStatus(els.actionStatus, 'Отправка...', 'ok');
-    const response = await chrome.runtime.sendMessage({ type: 'TEST_BREVO' });
+    const response = await chrome.runtime.sendMessage({ 
+      type: 'TEST_BREVO',
+      replyToEmail: els.replyToEmail.value.trim(),
+    });
     if (response?.ok) {
       setStatus(els.actionStatus, 'Отправлено', 'ok');
       await logger.info('options', 'Тестовое письмо отправлено');
@@ -280,6 +378,7 @@ async function init() {
   document.getElementById('save').addEventListener('click', saveSettings);
   document.getElementById('test-todoist').addEventListener('click', testTodoist);
   document.getElementById('test-brevo').addEventListener('click', testBrevo);
+  document.getElementById('check-brevo-account').addEventListener('click', checkBrevoAccount);
   document.getElementById('run-now').addEventListener('click', runNow);
   document.getElementById('send-test-email').addEventListener('click', sendTestEmail);
   document.getElementById('log-refresh').addEventListener('click', loadLogs);

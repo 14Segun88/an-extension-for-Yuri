@@ -20,7 +20,10 @@
       <div class="field">
         <label for="brevo-api-key">Brevo API key</label>
         <input id="brevo-api-key" type="password" placeholder="Вставьте ключ из Brevo" />
-        <button id="test-brevo" type="button" class="btn-secondary">Проверить Brevo</button>
+        <div class="button-group">
+          <button id="test-brevo" type="button" class="btn-secondary">Проверить Brevo</button>
+          <button id="check-brevo-account" type="button" class="btn-secondary">Проверить аккаунт</button>
+        </div>
         <span id="brevo-status" class="status"></span>
       </div>
     </section>
@@ -32,22 +35,61 @@
         <input id="scan-time" type="time" value="09:00" />
         <span id="next-run-display" class="hint"></span>
       </div>
+      <div class="field">
+        <label>Типы сканирования</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="scan-overdue" checked />
+            <span>Просроченные задачи</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="scan-no-due-date" />
+            <span>Задачи без сроков</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="scan-no-responsible" />
+            <span>Задачи без ответственного</span>
+          </label>
+        </div>
+        <span class="hint">Выберите типы задач для проверки</span>
+      </div>
     </section>
 
     <section class="section">
       <h2>Отправка</h2>
       <div class="field">
         <label for="sender-email">Sender email (подтверждён в Brevo)</label>
-        <input id="sender-email" type="email" placeholder="loftglam@gmail.com" />
+        <input id="sender-email" type="email" placeholder="denis908@yandex.ru" />
       </div>
       <div class="field">
         <label for="sender-name">Sender name</label>
         <input id="sender-name" type="text" placeholder="Todoist Overdue Bot" />
       </div>
       <div class="field">
+        <label for="reply-to-email">Reply-To email (для ответов сотрудников)</label>
+        <input id="reply-to-email" type="email" placeholder="denis908@yandex.ru" />
+        <span class="hint">Если указан, ответы сотрудников будут приходить на этот email</span>
+      </div>
+      <div class="field">
         <label for="recipients">Recipients (по одному email на строку)</label>
         <textarea id="recipients" rows="4" placeholder="loftglam@gmail.com&#10;elephant1047@gmail.com"></textarea>
         <span id="recipients-hint" class="hint"></span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Комментарии в Todoist</h2>
+      <div class="field">
+        <label class="checkbox-label">
+          <input type="checkbox" id="add-todoist-comments" />
+          <span>Добавлять комментарии под просроченными задачами</span>
+        </label>
+        <span class="hint">Если включено, система будет добавлять автоматические комментарии в Todoist</span>
+      </div>
+      <div class="field">
+        <label for="comment-author-email">Email автора комментариев</label>
+        <input id="comment-author-email" type="email" placeholder="loftglam@gmail.com" />
+        <span class="hint">Email пользователя, который будет указан как автор комментариев (используется replyToEmail)</span>
       </div>
     </section>
 

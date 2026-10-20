@@ -3,9 +3,9 @@
 
 import { storage, DEFAULTS } from './lib/storage.js';
 import { logger } from './lib/logger.js';
-import { getProjects, getTasks, getCollaborators } from './lib/todoist.js';
-import { filterOverdue, groupByAssigneeEmail } from './lib/overdue.js';
-import { sendEmail, generateTaskHtml, sendTestEmail } from './lib/brevo.js';
+import { getProjects, getTasks, getCollaborators, getProjectOwners, addTaskCommentWithNotify, createOverdueComment } from './lib/todoist.js';
+import { groupByAssigneeEmail, filterByType, groupByRecipients } from './lib/overdue.js';
+import { sendEmail, generateTaskHtml, sendTestEmail, checkBrevoAccount } from './lib/brevo.js';
 import { setAlarm, clearAlarm } from './lib/scheduler.js';
 
 // Имя alarm
@@ -21,7 +21,7 @@ async function scanAndNotify() {
   try {
     // Получаем настройки
     const settings = await storage.getAll();
-    const { todoistToken, brevoApiKey, timezone, senderEmail, senderName, recipients } = settings;
+    const { todoistToken, brevoApiKey, timezone, senderEmail, senderName, replyToEmail, recipients, scanTypes, addTodoistComments, commentAuthorEmail } = settings;
 
     if (!todoistToken || !brevoApiKey) {
       await logger.warn('background', 'Скан пропущен: не настроены токены');
@@ -35,19 +35,14 @@ async function scanAndNotify() {
     ]);
 
     // Логируем структуру ответов для отладки
-    const projectsStr = JSON.stringify(projectsData);
-    const tasksStr = JSON.stringify(tasksData);
-
     await logger.info('background', `Projects type: ${typeof projectsData}, isArray: ${Array.isArray(projectsData)}`);
-    await logger.info('background', `Projects sample: ${projectsStr.slice(0, 500)}`);
-    if (Array.isArray(projectsData) && projectsData.length > 0) {
-      await logger.info('background', `First project: ${JSON.stringify(projectsData[0]).slice(0, 400)}`);
-    }
-
     await logger.info('background', `Tasks type: ${typeof tasksData}, isArray: ${Array.isArray(tasksData)}`);
-    await logger.info('background', `Tasks sample: ${tasksStr.slice(0, 500)}`);
-    if (Array.isArray(tasksData) && tasksData.length > 0) {
-      await logger.info('background', `First task: ${JSON.stringify(tasksData[0]).slice(0, 400)}`);
+    
+    if (!Array.isArray(projectsData)) {
+      await logger.info('background', `Projects data: ${JSON.stringify(projectsData).slice(0, 500)}`);
+    }
+    if (!Array.isArray(tasksData)) {
+      await logger.info('background', `Tasks data: ${JSON.stringify(tasksData).slice(0, 500)}`);
     }
 
     // Обрабатываем разные форматы ответа
@@ -57,7 +52,7 @@ async function scanAndNotify() {
     const tasks = Array.isArray(tasksData) ? tasksData :
                   (tasksData?.results || tasksData?.tasks || tasksData?.items || []);
 
-    await logger.info('background', 'После обработки', {
+    await logger.info('background', 'Получены данные', {
       projectsCount: projects.length,
       tasksCount: tasks.length,
     });
@@ -77,40 +72,204 @@ async function scanAndNotify() {
       }
     }
 
-    // Фильтруем просроченные задачи
-    const nowMsk = new Date(new Date().toLocaleString('en-US', { timeZone: timezone || 'Europe/Moscow' }));
-    const overdueTasks = filterOverdue(tasks, nowMsk);
-    await logger.info('background', `Найдено просроченных: ${overdueTasks.length} из ${tasks.length}`);
+    // Пропускаем получение руководителей проектов в обычном скане,
+    // чтобы не засорять лог ошибками team/members.
 
-    if (overdueTasks.length === 0) {
-      await logger.info('background', 'Нет просроченных задач');
+    // Фильтруем задачи по выбранным типам
+    const nowMsk = new Date(new Date().toLocaleString('en-US', { timeZone: timezone || 'Europe/Moscow' }));
+
+    // Обязательные проверки для каждого запуска:
+    // 1) просроченные, 2) без срока при назначенном ответственном, 3) без ответственного
+    const requiredScanTypes = ['overdue', 'noDueDate', 'noResponsible'];
+    const configuredScanTypes = Array.isArray(scanTypes) ? scanTypes : (DEFAULTS.scanTypes || []);
+    const activeScanTypes = Array.from(new Set([...configuredScanTypes, ...requiredScanTypes]));
+
+    await logger.info('background', `Типы сканирования: ${JSON.stringify(activeScanTypes)}`);
+    
+    let allFilteredTasks = [];
+    
+    for (const scanType of activeScanTypes) {
+      const filteredTasks = filterByType(tasks, scanType, nowMsk);
+      await logger.info('background', `Тип ${scanType}: найдено ${filteredTasks.length} задач`);
+      allFilteredTasks = allFilteredTasks.concat(filteredTasks);
+    }
+    
+    // Убираем дубликаты задач
+    const uniqueTasks = Array.from(new Map(allFilteredTasks.map(task => [task.id, task])).values());
+    await logger.info('background', `Всего уникальных задач: ${uniqueTasks.length} из ${tasks.length}`);
+
+    if (uniqueTasks.length === 0) {
+      await logger.info('background', 'Нет задач для уведомления');
       await updateLastRun({ found: 0, sent: 0, errors: 0 });
       return;
     }
 
-    // Группируем по email
+    // Группируем задачи по типам
     const recipientsSet = new Set(recipients || []);
     await logger.info('background', `Recipients из настроек: ${JSON.stringify(Array.from(recipientsSet))}`);
 
-    const { byEmail, skipped } = groupByAssigneeEmail(overdueTasks, projects, collaboratorsByProject, recipientsSet);
+    // Разделяем задачи по типам для правильной группировки
+    const overdueTasks = filterByType(uniqueTasks, 'overdue', nowMsk);
+    const noDueDateTasks = filterByType(uniqueTasks, 'noDueDate', nowMsk);
+    const noResponsibleTasks = filterByType(uniqueTasks, 'noResponsible', nowMsk);
 
-    // Логируем пропущенные
-    for (const { task, reason } of skipped) {
-      await logger.warn('background', `Задача пропущена: ${reason}`, { taskId: task.id, content: task.content });
+    const byEmail = new Map();
+
+    if (recipientsSet.size > 0) {
+      // Группируем просроченные задачи и задачи без сроков по assignee email
+      const tasksWithAssignee = [...overdueTasks, ...noDueDateTasks];
+      const { byEmail: byAssigneeEmail, skipped: skippedAssignee } = groupByAssigneeEmail(tasksWithAssignee, projects, collaboratorsByProject, recipientsSet);
+
+      // Группируем задачи без ответственного по recipients
+      const { byEmail: byRecipientEmail, skipped: skippedNoResponsible } = groupByRecipients(noResponsibleTasks, recipientsSet);
+
+      // Добавляем задачи по assignee email
+      for (const [email, tasks] of byAssigneeEmail) {
+        byEmail.set(email, tasks);
+      }
+
+      // Добавляем задачи по recipient email
+      for (const [email, tasks] of byRecipientEmail) {
+        if (byEmail.has(email)) {
+          byEmail.set(email, [...byEmail.get(email), ...tasks]);
+        } else {
+          byEmail.set(email, tasks);
+        }
+      }
+
+      // Объединяем и логируем пропущенные задачи
+      const skipped = [...skippedAssignee, ...skippedNoResponsible];
+      for (const { task, reason } of skipped) {
+        await logger.warn('background', `Задача пропущена: ${reason}`, { taskId: task.id, content: task.content });
+      }
+    } else {
+      await logger.info('background', 'Recipients пустой: отправка писем пропущена');
+    }
+
+    // Добавляем комментарии в Todoist (если включено)
+    let commentsAdded = 0;
+    await logger.info('background', 'Проверка настроек комментариев', { 
+      addTodoistComments,
+      commentAuthorEmail,
+      hasAddTodoistComments: !!addTodoistComments,
+      hasCommentAuthorEmail: !!commentAuthorEmail
+    });
+    
+    if (addTodoistComments && commentAuthorEmail) {
+      const managerEmail = commentAuthorEmail.trim();
+      const managerEmailLower = managerEmail.toLowerCase();
+
+      await logger.info('background', 'Добавление комментариев в Todoist...', {
+        tasksCount: uniqueTasks.length,
+        authorEmail: commentAuthorEmail,
+        managerEmail,
+      });
+
+      // Определяем тип каждой задачи
+      for (const task of uniqueTasks) {
+        try {
+          let scanType = null;
+
+          // Определяем тип задачи
+          if (filterByType([task], 'overdue', nowMsk).length > 0) {
+            scanType = 'overdue';
+          } else if (filterByType([task], 'noDueDate', nowMsk).length > 0) {
+            scanType = 'noDueDate';
+          } else if (filterByType([task], 'noResponsible', nowMsk).length > 0) {
+            scanType = 'noResponsible';
+          }
+
+          if (scanType) {
+            const commentText = createOverdueComment(task, scanType, commentAuthorEmail, managerEmail);
+
+            const projectCollaborators = collaboratorsByProject.get(task.project_id) || [];
+            const managerCollaborator = projectCollaborators.find(c => (c?.email || '').toLowerCase() === managerEmailLower);
+
+            const notifyIds = [];
+            if (task.responsible_uid) {
+              notifyIds.push(task.responsible_uid);
+            }
+            if (managerCollaborator?.id) {
+              notifyIds.push(managerCollaborator.id);
+            }
+
+            await addTaskCommentWithNotify(todoistToken, task.id, commentText, notifyIds);
+            commentsAdded++;
+
+            await logger.info('background', `Комментарий добавлен к задаче ${task.id}`, {
+              scanType,
+              taskId: task.id,
+              content: task.content,
+              managerEmail,
+              notifyIds,
+            });
+          }
+        } catch (e) {
+          await logger.error('background', `Ошибка добавления комментария к задаче ${task.id}`, {
+            error: e.message,
+            taskId: task.id,
+            content: task.content
+          });
+        }
+      }
+
+      await logger.info('background', `Комментарии добавлены: ${commentsAdded} из ${uniqueTasks.length}`);
     }
 
     // Отправляем письма
     let sent = 0;
     let errors = 0;
     const today = new Date().toLocaleDateString('ru-RU', { timeZone: timezone || 'Europe/Moscow' });
+    const managerEmail = (replyToEmail || '').trim();
+
+    const splitTasksByCategory = (tasksList) => {
+      const overdue = [];
+      const noResponsible = [];
+      const noDueDate = [];
+      const noTime = [];
+
+      for (const task of tasksList) {
+        if (filterByType([task], 'overdue', nowMsk).length > 0) overdue.push(task);
+        if (filterByType([task], 'noResponsible', nowMsk).length > 0) noResponsible.push(task);
+        if (filterByType([task], 'noDueDate', nowMsk).length > 0) noDueDate.push(task);
+
+        const dueDateValue = task?.due?.date;
+        const hasNoTime = !!task?.due && !task?.due?.datetime && typeof dueDateValue === 'string' && !dueDateValue.includes('T');
+        if (hasNoTime) noTime.push(task);
+      }
+
+      return { overdue, noResponsible, noDueDate, noTime };
+    };
+
+    const renderTaskSection = (title, tasksList) => {
+      if (!tasksList.length) return '';
+      return `
+        <h3 style="margin: 20px 0 8px;">${title} (${tasksList.length})</h3>
+        ${generateTaskHtml(tasksList)}
+      `;
+    };
 
     for (const [email, tasksForEmail] of byEmail.entries()) {
-      const subject = `Просроченные задачи Todoist на ${today} (${tasksForEmail.length} шт.)`;
+      const categorized = splitTasksByCategory(tasksForEmail);
+
+      // Формируем тему письма
+      let subjectParts = [];
+      if (categorized.overdue.length > 0) subjectParts.push('просроченные');
+      if (categorized.noDueDate.length > 0) subjectParts.push('без дедлайна');
+      if (categorized.noResponsible.length > 0) subjectParts.push('без ответственного');
+      if (categorized.noTime.length > 0) subjectParts.push('без времени');
+
+      const subject = `Задачи Todoist (${subjectParts.join(', ')}) на ${today} — ${tasksForEmail.length} шт.`;
+
       const html = `
-        <h2>У вас ${tasksForEmail.length} просроченных задач</h2>
-        ${generateTaskHtml(tasksForEmail)}
+        <h2>У вас ${tasksForEmail.length} задач требуют внимания</h2>
+        ${renderTaskSection('Просроченные', categorized.overdue)}
+        ${renderTaskSection('Без ответственного', categorized.noResponsible)}
+        ${renderTaskSection('Без дедлайна', categorized.noDueDate)}
+        ${renderTaskSection('Без назначенного времени', categorized.noTime)}
         <p style="margin-top: 20px; font-size: 12px; color: #6b7280;">
           Это автоматическое уведомление от Todoist Overdue Notifier.
+          ${replyToEmail ? `Для ответов используйте: ${replyToEmail}` : ''}
         </p>
       `;
 
@@ -119,6 +278,7 @@ async function scanAndNotify() {
         subject,
         senderEmail,
         senderName,
+        replyToEmail,
         taskCount: tasksForEmail.length,
       }));
 
@@ -128,6 +288,7 @@ async function scanAndNotify() {
         html,
         senderEmail,
         senderName,
+        replyToEmail,
       });
 
       // Логируем полный результат
@@ -146,8 +307,52 @@ async function scanAndNotify() {
       }
     }
 
+    // Отдельное уведомление руководителю (Reply-To email)
+    if (managerEmail && uniqueTasks.length > 0) {
+      const managerCategorized = splitTasksByCategory(uniqueTasks);
+      const managerSubject = `Контроль задач Todoist на ${today} — ${uniqueTasks.length} шт.`;
+      const managerHtml = `
+        <h2>Сводка по задачам, требующим внимания: ${uniqueTasks.length}</h2>
+        <ul style="margin-bottom: 20px;">
+          <li>Просроченные: ${managerCategorized.overdue.length}</li>
+          <li>Без ответственного: ${managerCategorized.noResponsible.length}</li>
+          <li>Без дедлайна: ${managerCategorized.noDueDate.length}</li>
+          <li>Без назначенного времени: ${managerCategorized.noTime.length}</li>
+        </ul>
+        ${renderTaskSection('Просроченные', managerCategorized.overdue)}
+        ${renderTaskSection('Без ответственного', managerCategorized.noResponsible)}
+        ${renderTaskSection('Без дедлайна', managerCategorized.noDueDate)}
+        ${renderTaskSection('Без назначенного времени', managerCategorized.noTime)}
+        <p style="margin-top: 20px; font-size: 12px; color: #6b7280;">
+          Это автоматическая эскалация руководителю из поля Reply-To email.
+        </p>
+      `;
+
+      const managerResult = await sendEmail(brevoApiKey, {
+        to: managerEmail,
+        subject: managerSubject,
+        html: managerHtml,
+        senderEmail,
+        senderName,
+        replyToEmail,
+      });
+
+      await logger.info('background', `Результат отправки руководителю ${managerEmail}`, JSON.stringify({
+        ok: managerResult?.ok,
+        error: managerResult?.error,
+        messageId: managerResult?.messageId,
+        taskCount: uniqueTasks.length,
+      }));
+
+      if (managerResult.ok) {
+        sent++;
+      } else {
+        errors++;
+      }
+    }
+
     // Обновляем lastRun
-    await updateLastRun({ found: overdueTasks.length, sent, errors });
+    await updateLastRun({ found: uniqueTasks.length, sent, errors });
 
     // Показываем уведомление Chrome
     if (sent > 0) {
@@ -155,12 +360,12 @@ async function scanAndNotify() {
         type: 'basic',
         iconUrl: 'icons/128.png',
         title: 'Todoist Overdue Notifier',
-        message: `Отправлено ${sent} писем, просрочено ${overdueTasks.length} задач`,
+        message: `Отправлено ${sent} писем, задач с проблемами: ${uniqueTasks.length}`,
       });
     }
 
     const duration = Date.now() - startTime;
-    await logger.info('background', `Скан завершён за ${duration}мс`, { found: overdueTasks.length, sent, errors });
+    await logger.info('background', `Скан завершён за ${duration}мс`, { found: uniqueTasks.length, sent, errors });
   } catch (e) {
     await logger.error('background', `Ошибка скана: ${e.message}`, { error: e.stack });
     await updateLastRun({ found: 0, sent: 0, errors: 1 });
@@ -307,13 +512,40 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
           const brevoApiKey = msg?.brevoApiKey || (await storage.get('brevoApiKey'));
           const senderEmail = msg?.senderEmail || (await storage.get('senderEmail'));
           const senderName = msg?.senderName || (await storage.get('senderName'));
+          const replyToEmail = msg?.replyToEmail || (await storage.get('replyToEmail'));
           const recipients = msg?.recipients || (await storage.get('recipients'));
           if (!brevoApiKey || !senderEmail || !recipients?.length) {
             sendResponse({ ok: false, error: 'Не все параметры указаны' });
             return;
           }
-          const result = await sendTestEmail(brevoApiKey, senderEmail, senderName, recipients[0]);
+          const result = await sendTestEmail(brevoApiKey, senderEmail, senderName, recipients[0], replyToEmail);
           sendResponse(result);
+          break;
+
+        case 'TEST_PROJECT_OWNERS':
+          const todoistTokenForOwners = msg?.todoistToken || (await storage.get('todoistToken'));
+          if (!todoistTokenForOwners) {
+            sendResponse({ ok: false, error: 'Токен не указан' });
+            return;
+          }
+          try {
+            const owners = await getProjectOwners(todoistTokenForOwners);
+            await logger.info('background', 'Тест руководителей проектов успешен', { count: owners.length });
+            sendResponse({ ok: true, data: owners });
+          } catch (e) {
+            await logger.error('background', 'Ошибка теста руководителей проектов', { error: e.message });
+            sendResponse({ ok: false, error: e.message });
+          }
+          break;
+
+        case 'CHECK_BREVO_ACCOUNT':
+          const brevoApiKeyForCheck = msg?.brevoApiKey || (await storage.get('brevoApiKey'));
+          if (!brevoApiKeyForCheck) {
+            sendResponse({ ok: false, error: 'API key не указан' });
+            return;
+          }
+          const accountResult = await checkBrevoAccount(brevoApiKeyForCheck);
+          sendResponse(accountResult);
           break;
 
         default:

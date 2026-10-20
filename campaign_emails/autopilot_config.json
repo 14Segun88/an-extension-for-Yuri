@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "mode": "auto",
+  "testModeImmediate": false,
+  "checkIntervalSec": 30,
+  "lastEvaluatedAt": "2026-10-20T19:10:03.398Z",
+  "status": "IDLE"
+}

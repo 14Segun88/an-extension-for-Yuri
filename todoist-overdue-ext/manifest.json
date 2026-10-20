@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Todoist Overdue Notifier",
   "version": "0.1.0",
-  "description": "Сканирует Todoist на просроченные задачи и шлёт уведомления сотрудникам через Brevo.",
+  "description": "Сканирует Todoist на просроченные задачи и шлёт уведомления сотрудникам через SMTP backend.",
   "permissions": [
     "alarms",
     "storage",
@@ -10,7 +10,8 @@
   ],
   "host_permissions": [
     "https://api.todoist.com/*",
-    "https://api.brevo.com/*"
+    "http://127.0.0.1:8787/*",
+    "http://localhost:8787/*"
   ],
   "background": {
     "service_worker": "background.js",

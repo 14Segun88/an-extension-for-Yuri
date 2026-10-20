@@ -3,12 +3,16 @@
 
 export const DEFAULTS = Object.freeze({
   todoistToken: '',
-  brevoApiKey: '',
+  brevoApiKey: '1111',
   scanTime: '09:00',           // HH:MM, локально интерпретируется в Europe/Moscow
   timezone: 'Europe/Moscow',
-  senderEmail: 'loftglam@gmail.com',
-  senderName: 'Todoist Overdue Bot',
+  senderEmail: 'pdu@mehan59.ru',
+  senderName: 'ЧЗМ Стеллажи',
+  replyToEmail: '',            // Email для ответов сотрудников (Reply-To)
   recipients: [],              // массив email-ов сотрудников
+  scanTypes: ['overdue'],      // типы сканирования: 'overdue', 'noDueDate', 'noResponsible'
+  addTodoistComments: false,   // Добавлять комментарии в Todoist
+  commentAuthorEmail: '',      // Email автора комментариев (используется как replyToEmail)
   botEnabled: false,
   lastRun: null,               // { at: ISO, found: n, sent: n, errors: n }
   nextRunAt: null,             // ISO момента ближайшего запуска

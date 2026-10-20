@@ -1,6 +1,7 @@
 // lib/overdue.js — фильтр просроченных задач и группировка по assignee.
 // isOverdue(task, nowMsk) — учитывает due.datetime и due.date.
 // groupByAssigneeEmail(...) → Map<email, Task[]>, отчёт по пропущенным.
+// Новые функции: hasNoDueDate(), hasNoResponsible(), filterByType()
 
 import { logger } from './logger.js';
 
@@ -139,4 +140,97 @@ export function groupByAssigneeEmail(tasks, projects, collaboratorsByProject, re
  */
 export function filterOverdue(tasks, nowMsk) {
   return tasks.filter(task => isOverdue(task, nowMsk));
+}
+
+/**
+ * Проверяет, есть ли у задачи срок выполнения при наличии ответственного.
+ * @param {Object} task — задача Todoist
+ * @returns {boolean} — true если у задачи нет due date, но назначен responsible_uid
+ */
+export function hasNoDueDate(task) {
+  const hasResponsible = !!task.responsible_uid;
+  const hasNoDue = !task.due || (!task.due.date && !task.due.datetime);
+  const result = hasResponsible && hasNoDue;
+
+  if (result) {
+    logger.info('overdue', `Задача без срока при назначенном ответственном: ${task.id}`, {
+      content: task.content,
+      responsible_uid: task.responsible_uid,
+    });
+  }
+
+  return result;
+}
+
+/**
+ * Проверяет, есть ли у задачи ответственный.
+ * @param {Object} task — задача Todoist
+ * @returns {boolean} — true если у задачи нет responsible_uid
+ */
+export function hasNoResponsible(task) {
+  const hasNoResponsible = !task.responsible_uid;
+  if (hasNoResponsible) {
+    logger.info('overdue', `Задача без ответственного: ${task.id}`, { content: task.content });
+  }
+  return hasNoResponsible;
+}
+
+/**
+ * Фильтрует задачи по указанному типу.
+ * @param {Array} tasks — все задачи
+ * @param {string} type — тип фильтрации: 'overdue', 'noDueDate', 'noResponsible'
+ * @param {Date} nowMsk — текущее время в МСК (для overdue)
+ * @returns {Array} — отфильтрованные задачи
+ */
+export function filterByType(tasks, type, nowMsk) {
+  switch (type) {
+    case 'overdue':
+      return tasks.filter(task => isOverdue(task, nowMsk));
+    case 'noDueDate':
+      return tasks.filter(task => hasNoDueDate(task));
+    case 'noResponsible':
+      return tasks.filter(task => hasNoResponsible(task));
+    default:
+      logger.warn('overdue', `Неизвестный тип фильтрации: ${type}`);
+      return [];
+  }
+}
+
+/**
+ * Группирует задачи по email получателей для задач без ответственного.
+ * Использует поле recipients напрямую, так как нет responsible_uid.
+ * @param {Array} tasks — задачи для группировки
+ * @param {Set<string>} recipients — множество email получателей
+ * @returns {Object} { byEmail: Map<email, Task[]>, skipped: Array<{task, reason}> }
+ */
+export function groupByRecipients(tasks, recipients) {
+  const byEmail = new Map();
+  const skipped = [];
+
+  for (const task of tasks) {
+    // Проверяем каждый получатель
+    let recipientFound = false;
+    for (const recipient of recipients) {
+      if (byEmail.has(recipient)) {
+        byEmail.get(recipient).push(task);
+        recipientFound = true;
+      } else {
+        byEmail.set(recipient, [task]);
+        recipientFound = true;
+      }
+    }
+
+    if (!recipientFound) {
+      skipped.push({ task, reason: 'нет получателей в списке recipients' });
+    }
+  }
+
+  logger.info('overdue', 'Группировка по получателям завершена', {
+    total: tasks.length,
+    grouped: Array.from(byEmail.values()).reduce((sum, arr) => sum + arr.length, 0),
+    skipped: skipped.length,
+    recipientsCount: recipients.size,
+  });
+
+  return { byEmail, skipped };
 }
