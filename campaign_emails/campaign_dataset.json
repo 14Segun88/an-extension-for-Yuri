@@ -1402,5 +1402,686 @@
     ],
     "batch": 3,
     "batch_label": "Партия 3 (20.10)"
+  },
+  {
+    "id": 46,
+    "company": "АО «ДМЗ им. Н.П. Федорова» (Дубненский машиностроительный завод)",
+    "to_email": "info@dmzdubna.ru",
+    "domain": "dmzdubna.ru",
+    "fio": "В технический отдел (ПТО)",
+    "position": "Главный технолог",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Авиационное и специальное машиностроение",
+    "profile": "Авиационные металлоконструкции, обработка титанового и стального листа",
+    "icp_score": 97,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В технический отдел (ПТО) АО «ДМЗ им. Н.П. Федорова» (Дубненский машиностроительный завод): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «ДМЗ им. Н.П. Федорова» (Дубненский машиностроительный завод), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «ДМЗ им. Н.П. Федорова» (Дубненский машиностроительный завод)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mx2.dmzdubna.ru",
+    "siteOk": false,
+    "siteStatus": "HTTP 403",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "ℹ️ Контакты защищены от роботов",
+    "siteEmails": [],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 47,
+    "company": "АО «Силовые машины» (Ленинградский Металлический Завод)",
+    "to_email": "mail@power-m.ru",
+    "domain": "power-m.ru",
+    "fio": "В дирекцию по производству паровых и гидротурбин",
+    "position": "Директор по производству",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Турбиностроение и энергомашиностроение",
+    "profile": "Турбины ТЭС/ГЭС/АЭС, толстолистовая сталь, строгие допуски, мостовые краны 100т",
+    "icp_score": 97,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В дирекцию по производству паровых и гидротурбин АО «Силовые машины» (Ленинградский Металлический Завод): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Силовые машины» (Ленинградский Металлический Завод), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Силовые машины» (Ленинградский Металлический Завод)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "chr-ksmg-01.severstal.com",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": true,
+    "verificationStatus": "✓ Подтверждён официальным сайтом",
+    "siteEmails": [
+      "security@power-m.ru",
+      "mail@power-m.ru",
+      "pmservice@power-m.ru",
+      "nuclear@power-m.ru",
+      "dnpp@power-m.ru",
+      "thermal@power-m.ru",
+      "hydro@power-m.ru",
+      "karpov_ks@nordenergogroup.com",
+      "yakovleva_ya@power-m.ru",
+      "leonova_ne@power-m.ru",
+      "petryakov_aa@power-m.ru",
+      "zagorskaya_es@power-m.ru",
+      "zubarev_vv@power-m.ru",
+      "lyutskanov_ri@power-m.ru",
+      "yablokova_aa@power-m.ru",
+      "protopopov_ov@power-m.ru",
+      "furmanov_gi@power-m.ru",
+      "kolosov_ma@power-m.ru",
+      "minizyanov_mt@power-m.ru",
+      "tsyganok_bv@power-m.ru",
+      "rabota@power-m.ru",
+      "press-office@power-m.ru",
+      "evteshina_ea@power-m.ru",
+      "kulyasova_ea@power-m.ru",
+      "pasenova_mg@power-m.ru",
+      "scherbakov_av@power-m.ru",
+      "kozlova_aa@power-m.ru",
+      "degtyannikov_ay@power-m.ru",
+      "emec@emec.com.co",
+      "tsvetkov_mv@power-m.ru",
+      "office.yu@power-m.ru",
+      "evseev_an@spb.power-m.ru",
+      "radionov_rv@power-m.ru"
+    ],
+    "hasWebForm": true,
+    "webFormUrl": "https://power-m.ru",
+    "webFormsCount": 2,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 48,
+    "company": "АО «Коломенский завод» (ТМХ)",
+    "to_email": "priemn@kolomnadiesel.ru",
+    "domain": "kolomnadiesel.com",
+    "fio": "В дирекцию по производству и главному инженеру",
+    "position": "Технический директор",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Локомотивостроение и дизелестроение",
+    "profile": "Производство магистральных тепловозов, дизелей, крупногабаритный раскрой листового проката",
+    "icp_score": 96,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В дирекцию по производству и главному инженеру АО «Коломенский завод» (ТМХ): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Коломенский завод» (ТМХ), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Коломенский завод» (ТМХ)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mx1.masterhost.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: priemn@kolomnadiesel.ru",
+    "siteEmails": [
+      "priemn@kolomnadiesel.ru",
+      "sale@kolomnadiesel.ru",
+      "tmh-er@tmholding.ru",
+      "info@tmholding.ru"
+    ],
+    "hasWebForm": true,
+    "webFormUrl": "https://kolomnadiesel.com",
+    "webFormsCount": 1,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 49,
+    "company": "АО «Балтийский завод» (ОСК)",
+    "to_email": "zavod@bz.ru",
+    "domain": "bz.ru",
+    "fio": "В службу главного технолога судокорпусного производства",
+    "position": "Главный технолог",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Судостроение и атомный ледокольный флот",
+    "profile": "Корпусообрабатывающий цех, судовая сталь толщиной до 100 мм, портальные краны",
+    "icp_score": 96,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В службу главного технолога судокорпусного производства АО «Балтийский завод» (ОСК): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Балтийский завод» (ОСК), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Балтийский завод» (ОСК)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "ksmg-a.bz.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: zavod@bz.ru",
+    "siteEmails": [
+      "zavod@bz.ru",
+      "marketing@bz.ru",
+      "propeller@bz.ru",
+      "sales@bz.ru",
+      "resume@bz.ru",
+      "pr@bz.ru"
+    ],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 50,
+    "company": "ПАО «ЗиО-Подольск» (Машиностроительный завод)",
+    "to_email": "zio@eatom.ru",
+    "domain": "eatom.ru",
+    "fio": "В приемную главного инженера",
+    "position": "Главный инженер",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Энергетическое и атомное машиностроение",
+    "profile": "Заготовительный цех, раскрой толстого листа до 120 мм, котлостроение, мостовые краны 50т",
+    "icp_score": 95,
+    "pain_point": "формулировка боли",
+    "salutation": "Здравствуйте!",
+    "subject": "В приемную главного инженера ПАО «ЗиО-Подольск» (Машиностроительный завод): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства ПАО «ЗиО-Подольск» (Машиностроительный завод), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: формулировка боли.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>ПАО «ЗиО-Подольск» (Машиностроительный завод)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> формулировка боли\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mail.eatom.ru",
+    "siteOk": false,
+    "siteStatus": "socket hang up",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "ℹ️ Контакты защищены от роботов",
+    "siteEmails": [],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 51,
+    "company": "АО «Мытищинский машиностроительный завод»",
+    "to_email": "info@mmzavod.ru",
+    "domain": "mmzavod.ru",
+    "fio": "В службу главного инженера",
+    "position": "Главный инженер",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Специальное гусеничное машиностроение",
+    "profile": "Шасси специальной техники, броневой и конструкционный лист, плазменный раскрой",
+    "icp_score": 95,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В службу главного инженера АО «Мытищинский машиностроительный завод»: Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Мытищинский машиностроительный завод», прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Мытищинский машиностроительный завод»</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mx2.mmzavod.ru",
+    "siteOk": false,
+    "siteStatus": "HTTP 403",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "ℹ️ Контакты защищены от роботов",
+    "siteEmails": [],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 52,
+    "company": "АО «КМЗ Зенит» (Красногорский завод им. С.А. Зверева)",
+    "to_email": "mail@shvabe.com",
+    "domain": "shvabe.com",
+    "fio": "В дирекцию по закупкам и главному инженеру",
+    "position": "Главный инженер",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Оптико-электронное и точное приборостроение",
+    "profile": "Сложные металлоконструкции, цех механической обработки, раскрой прецизионного листа",
+    "icp_score": 94,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В дирекцию по закупкам и главному инженеру АО «КМЗ Зенит» (Красногорский завод им. С.А. Зверева): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «КМЗ Зенит» (Красногорский завод им. С.А. Зверева), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «КМЗ Зенит» (Красногорский завод им. С.А. Зверева)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mail.shvabe.com",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: mail@shvabe.com",
+    "siteEmails": [
+      "mail@shvabe.com"
+    ],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 53,
+    "company": "АО «Обуховский завод» (Концерн ВКО Алмаз-Антей)",
+    "to_email": "dou@goz.ru",
+    "domain": "goz.ru",
+    "fio": "В заготовительно-сварочное производство",
+    "position": "Начальник производства",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Специальное и оборонное машиностроение",
+    "profile": "Крупногабаритные пусковые установки, раскрой броневого листа, крановые операции",
+    "icp_score": 94,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В заготовительно-сварочное производство АО «Обуховский завод» (Концерн ВКО Алмаз-Антей): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Обуховский завод» (Концерн ВКО Алмаз-Антей), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Обуховский завод» (Концерн ВКО Алмаз-Антей)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mx.smdd.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: dou@goz.ru",
+    "siteEmails": [
+      "core@1.6.2",
+      "dom@1.6.5",
+      "dou@goz.ru",
+      "gp@goz.ru",
+      "ec.security@goz.ru"
+    ],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 54,
+    "company": "АО «Метровагонмаш» (Трансмашхолдинг)",
+    "to_email": "info@tmholding.ru",
+    "domain": "tmholding.ru",
+    "fio": "В службу главного механика и главного инженера",
+    "position": "Главный инженер",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Транспортное машиностроение и вагоностроение",
+    "profile": "Производство вагонов метро и рельсовых автобусов, листовой раскрой, кран-балки цеха сборки",
+    "icp_score": 93,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В службу главного механика и главного инженера АО «Метровагонмаш» (Трансмашхолдинг): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Метровагонмаш» (Трансмашхолдинг), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Метровагонмаш» (Трансмашхолдинг)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "smtp0.tmholding.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: info@tmholding.ru",
+    "siteEmails": [
+      "info@tmholding.ru"
+    ],
+    "hasWebForm": true,
+    "webFormUrl": "https://tmholding.ru",
+    "webFormsCount": 2,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 55,
+    "company": "ООО «Петербургский Машиностроительный Завод»",
+    "to_email": "spmz@mashzavod.su",
+    "domain": "mashzavod.su",
+    "fio": "Яковлев Борис Львович",
+    "position": "Главный инженер",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Сельскохозяйственное и тракторное машиностроение",
+    "profile": "Производство тракторов К-700/СТАНИСЛАВ, лазерный раскрой листа до 30 мм",
+    "icp_score": 93,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Уважаемый Борис Львович!",
+    "subject": "Для ООО «Петербургский Машиностроительный Завод»: Электромеханический стеллаж 25 тн для хранения листового металла (КП ЧЗ «Механика»)",
+    "plain_text": "Уважаемый Борис Львович!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства ООО «Петербургский Машиностроительный Завод», прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Уважаемый Борис Львович!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>ООО «Петербургский Машиностроительный Завод»</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mx1.beget.com",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "ℹ️ Контакты защищены от роботов",
+    "siteEmails": [],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 56,
+    "company": "ПАО «Криогенмаш» (Группа ОМЗ)",
+    "to_email": "root@cryogenmash.ru",
+    "domain": "cryogenmash.ru",
+    "fio": "В службу главного механика",
+    "position": "Главный механик",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Криогенное и химическое машиностроение",
+    "profile": "Емкостное оборудование, крупногабаритный лист нержавеющей стали, цеха с кран-балками",
+    "icp_score": 92,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В службу главного механика ПАО «Криогенмаш» (Группа ОМЗ): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства ПАО «Криогенмаш» (Группа ОМЗ), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>ПАО «Криогенмаш» (Группа ОМЗ)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "srvedge-co01.omzglobal.com",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: root@cryogenmash.ru",
+    "siteEmails": [
+      "root@cryogenmash.ru",
+      "pr@cryogenmash.ru"
+    ],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 57,
+    "company": "АО «Средне-Невский судостроительный завод» (СНСЗ)",
+    "to_email": "office@snsz.ru",
+    "domain": "snsz.ru",
+    "fio": "В отдел закупок оборудования и главному инженеру",
+    "position": "Главный инженер",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Военное и гражданское кораблестроение",
+    "profile": "Корабли противоминной обороны, композиты и немагнитная сталь, раскрой листа",
+    "icp_score": 92,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В отдел закупок оборудования и главному инженеру АО «Средне-Невский судостроительный завод» (СНСЗ): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «Средне-Невский судостроительный завод» (СНСЗ), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «Средне-Невский судостроительный завод» (СНСЗ)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "mx.snsz.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: office@snsz.ru",
+    "siteEmails": [
+      "office@snsz.ru"
+    ],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 58,
+    "company": "АО «ЭЗТМ» (Электростальский завод тяжелого машиностроения)",
+    "to_email": "eztm@eztm.ru",
+    "domain": "eztm.ru",
+    "fio": "В техническую дирекцию",
+    "position": "Главный инженер",
+    "region": "Сегмент A (Москва и МО)",
+    "industry": "Тяжелое машиностроение (прокатные станы)",
+    "profile": "Трубопрокатное и прокатное оборудование, мощные заготовительные цеха с кран-балками",
+    "icp_score": 91,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В техническую дирекцию АО «ЭЗТМ» (Электростальский завод тяжелого машиностроения): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства АО «ЭЗТМ» (Электростальский завод тяжелого машиностроения), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>АО «ЭЗТМ» (Электростальский завод тяжелого машиностроения)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "inet.eztm.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "⚠️ На сайте указан: eztm@eztm.ru",
+    "siteEmails": [
+      "eztm@eztm.ru"
+    ],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 59,
+    "company": "ПАО «Ижорские заводы» (ОМЗ)",
+    "to_email": "info@omzglobal.com",
+    "domain": "omzglobal.com",
+    "fio": "В службу главного механика и главного инженера",
+    "position": "Главный инженер",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Тяжелое энергетическое машиностроение",
+    "profile": "Корпуса реакторов, сосуды давления, тяжелый листовой прокат до 200 мм",
+    "icp_score": 91,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Здравствуйте!",
+    "subject": "В службу главного механика и главного инженера ПАО «Ижорские заводы» (ОМЗ): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "plain_text": "Здравствуйте!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства ПАО «Ижорские заводы» (ОМЗ), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Здравствуйте!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>ПАО «Ижорские заводы» (ОМЗ)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "srvedge-co01.omzglobal.com",
+    "siteOk": false,
+    "siteStatus": "Timeout",
+    "isEmailVerifiedOnSite": false,
+    "verificationStatus": "ℹ️ Контакты защищены от роботов",
+    "siteEmails": [],
+    "hasWebForm": false,
+    "webFormUrl": null,
+    "webFormsCount": 0,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
+  },
+  {
+    "id": 60,
+    "company": "ООО «Кингисеппский машиностроительный завод» (КМЗ)",
+    "to_email": "info@kmz1.ru",
+    "domain": "kmz1.ru",
+    "fio": "Русин Анатолий Сергеевич",
+    "position": "Генеральный директор",
+    "region": "Сегмент B (СПб и ЛО)",
+    "industry": "Дизелестроение и тяжелое машиностроение",
+    "profile": "Заготовительный цех, дизельные двигатели, прокат 20-80 мм, кран-балки",
+    "icp_score": 90,
+    "pain_point": "Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой",
+    "salutation": "Уважаемый Анатолий Сергеевич!",
+    "subject": "Для ООО «Кингисеппский машиностроительный завод» (КМЗ): Электромеханический стеллаж 25 тн для хранения листового металла (КП ЧЗ «Механика»)",
+    "plain_text": "Уважаемый Анатолий Сергеевич!\n\n«Чайковский завод МЕХАНИКА» является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.\n\nВ пример для производства ООО «Кингисеппский машиностроительный завод» (КМЗ), прошу рассмотреть уникальный стеллаж с приводами грузоподъемностью 25 тн для хранения листового металла.\nОборудование решает ключевую задачу: Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой.\n\nРолик — демонстрация в действии (Rutube):\nhttps://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\n\nОфициальный сайт завода: https://mehan59.ru/\n\nВо вложении два файла:\n1. Информационное письмо о предприятии ЧЗМ («Механика Инф.pdf»)\n2. Коммерческое предложение с фото и техническими параметрами («КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf»)\n\nВ продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной для предварительного расчета под параметры Вашего цеха.\n\nС Благодарностью,\nЗаместитель директора по развитию\n«Чайковский завод МЕХАНИКА»\nг. Санкт-Петербург\nПыхтеев Денис Юрьевич\n--\nТел.: +7 (919) 700-07-20\nE-mail: pdu@mehan59.ru\nСайт: mehan59.ru",
+    "html": "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  body { font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #222222; margin: 0; padding: 0; }\n  .container { max-width: 650px; margin: 0 auto; padding: 20px; }\n  .salutation { font-size: 16px; font-weight: 600; color: #1a237e; margin-bottom: 16px; }\n  .highlight-box { background: #f0f4f8; border-left: 4px solid #1976d2; padding: 12px 16px; margin: 16px 0; border-radius: 0 4px 4px 0; }\n  .video-btn { display: inline-block; background: #e53935; color: #ffffff !important; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; margin: 8px 0; }\n  .site-link { color: #1976d2; text-decoration: underline; }\n  .attachments-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 16px; margin: 16px 0; }\n  .attachments-box ul { margin: 6px 0 0 0; padding-left: 20px; }\n  .signature { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eeeeee; font-size: 13px; color: #424242; }\n  .signature-name { font-size: 15px; font-weight: bold; color: #1a237e; }\n  .signature-title { color: #616161; font-weight: 500; }\n  .signature-phone { font-size: 14px; font-weight: 600; color: #2e7d32; margin-top: 4px; }\n</style>\n</head>\n<body>\n<div class=\"container\">\n  <div class=\"salutation\">Уважаемый Анатолий Сергеевич!</div>\n  <p><b>«Чайковский завод МЕХАНИКА»</b> является российским разработчиком и производителем промышленной металлической мебели и нестандартного оборудования для разных отраслей.</p>\n  <p>В пример для производства <b>ООО «Кингисеппский машиностроительный завод» (КМЗ)</b>, прошу рассмотреть уникальный <b>электромеханический стеллаж с приводами грузоподъемностью 25 тн</b> для хранения листового металла.</p>\n  <div class=\"highlight-box\">\n    <b>Эффект для цеха:</b> Безопасное хранение тяжелого листа до 5 т на ярус (25 т на стеллаж) и мгновенный доступ кран-балкой\n  </div>\n  <p><b>Ролик — демонстрация работы стеллажа в действии:</b><br/>\n    <a href=\"https://rutube.ru/video/9b4e718a696a972789687791713ba5fa/\" class=\"video-btn\" target=\"_blank\">▶ Смотреть видео на Rutube (1:20 мин)</a>\n  </p>\n  <p>Ссылка на официальный сайт завода: <a href=\"https://mehan59.ru/\" class=\"site-link\" target=\"_blank\">https://mehan59.ru/</a></p>\n  <div class=\"attachments-box\">\n    <b>📎 Во вложении к письму два файла:</b>\n    <ul>\n      <li><b>Механика Инф.pdf</b> — информационное письмо и презентация возможностей ЧЗМ</li>\n      <li><b>КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf</b> — технико-коммерческое предложение с чертежами и фото</li>\n    </ul>\n  </div>\n  <p>В продолжение разговора прошу перенаправить информацию в технический отдел (главному инженеру / ПТО) и отдел закупок, либо связаться со мной по телефону для предварительного расчета под габариты Вашего производства.</p>\n  <div class=\"signature\">\n    С Благодарностью,<br/>\n    <span class=\"signature-title\">Заместитель директора по развитию</span><br/>\n    <b>«Чайковский завод МЕХАНИКА»</b> (г. Санкт-Петербург)<br/>\n    <div class=\"signature-name\">Пыхтеев Денис Юрьевич</div>\n    <div class=\"signature-phone\">Тел.: +7 (919) 700-07-20</div>\n    <div>E-mail: <a href=\"mailto:pdu@mehan59.ru\">pdu@mehan59.ru</a> | Сайт: <a href=\"https://mehan59.ru/\">mehan59.ru</a></div>\n  </div>\n</div>\n</body>\n</html>",
+    "mxOk": true,
+    "primaryMx": "exchange.spbdiesel.ru",
+    "siteOk": true,
+    "siteStatus": "HTTP 200 OK (Сайт активен)",
+    "isEmailVerifiedOnSite": true,
+    "verificationStatus": "✓ Подтверждён официальным сайтом",
+    "siteEmails": [
+      "mail@kakorin.com",
+      "info@kmz1.ru"
+    ],
+    "hasWebForm": true,
+    "webFormUrl": "https://kmz1.ru",
+    "webFormsCount": 8,
+    "attachments": [
+      {
+        "filename": "Механика Инф.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/Механика Инф.pdf",
+        "description": "Информационное письмо о заводе ЧЗМ"
+      },
+      {
+        "filename": "КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "path": "/home/segun/CascadeProjects/Расширение для Юрия/Вложения/КП_ЧЗМ_стеллаж_для_предприятий_с_фото.pdf",
+        "description": "Коммерческое предложение на стеллаж 25 тн с фото"
+      }
+    ],
+    "batch": 4,
+    "batch_label": "Партия 4 (21.10)"
   }
 ]

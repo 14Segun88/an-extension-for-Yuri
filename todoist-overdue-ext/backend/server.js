@@ -194,7 +194,16 @@ function loadLog() {
 
 function saveLog(entry) {
   const log = loadLog();
-  log.push(entry);
+  const existingIdx = log.findIndex(l => 
+    l.contactId === entry.contactId && 
+    (l.stage || 'initial') === (entry.stage || 'initial') &&
+    (l.touchNumber || 1) === (entry.touchNumber || 1)
+  );
+  if (existingIdx >= 0 && entry.status === 'SENT') {
+    log[existingIdx] = entry;
+  } else {
+    log.push(entry);
+  }
   fs.writeFileSync(LOG_PATH, JSON.stringify(log, null, 2), 'utf-8');
   return log;
 }
@@ -342,8 +351,13 @@ function evaluatePipeline() {
   const dataset = loadDataset(); // all 30 factories
   const logs = loadLog(); // dispatch_log.json
   const leads = loadLeads(); // leads.json
-  const leadIds = new Set(leads.map(l => l.id));
-  leadIds.add(5); // Plant #5 Rosatom Elemarsh is won lead
+  const leadIds = new Set();
+  leads.forEach(l => {
+    if (l.contactId) leadIds.add(l.contactId);
+    if (l.id && typeof l.id === 'number' && l.id < 1000) leadIds.add(l.id);
+  });
+  leadIds.add(5); // Plant #5 Rosatom Elemash is won lead
+  leadIds.add(21); // Plant #21 MMZ is registered lead
 
   const now = new Date();
 
@@ -827,7 +841,7 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    // --- API: Reset Campaign Log and Queue ---
+    // --- API: Reset Campaign Queue (Safe queue reset without wiping dispatch history) ---
     if (url.pathname === '/api/campaign/reset' && req.method === 'POST') {
       campaignState.isRunning = false;
       campaignState.isPaused = false;
@@ -835,11 +849,19 @@ const server = http.createServer(async (req, res) => {
       campaignState.countdownSec = 0;
       campaignState.lastSentAt = null;
 
-      fs.writeFileSync(LOG_PATH, '[]', 'utf-8');
+      const body = await readBody(req);
+      const data = body ? JSON.parse(body) : {};
+      if (data.forceWipe === true) {
+        if (fs.existsSync(LOG_PATH)) {
+          const backupPath = path.resolve(__dirname, `../../campaign_emails/dispatch_log_backup_${Date.now()}.json`);
+          fs.copyFileSync(LOG_PATH, backupPath);
+        }
+        fs.writeFileSync(LOG_PATH, '[]', 'utf-8');
+      }
 
       json(res, 200, {
         ok: true,
-        message: 'Лог рассылки очищен, кампания сброшена к начальному состоянию!',
+        message: 'Очередь рассылки сброшена, история отправок сохранена!',
         campaignState,
       });
       return;
@@ -1256,15 +1278,7 @@ const server = http.createServer(async (req, res) => {
 
       fs.writeFileSync(DATASET_PATH, JSON.stringify(updatedDataset, null, 2), 'utf-8');
 
-      // Only reset campaign log if explicitly requested
-      if (data.resetLog === true) {
-        fs.writeFileSync(LOG_PATH, '[]', 'utf-8');
-        campaignState.isRunning = false;
-        campaignState.isPaused = false;
-        campaignState.currentIndex = 0;
-        campaignState.countdownSec = 0;
-        campaignState.lastSentAt = null;
-      }
+      // Note: Historical dispatch log is strictly preserved so previously processed factories are never wiped or re-sent
 
       json(res, 200, {
         ok: true,

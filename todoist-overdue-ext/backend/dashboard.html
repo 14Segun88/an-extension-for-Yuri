@@ -1697,10 +1697,12 @@
 
         <div style="display: flex; gap: 8px; margin-bottom: 12px; align-items: center; flex-wrap: wrap; background: #0f172a; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
           <span style="font-size: 12px; color: #94a3b8; font-weight: 600;">Выбор партии:</span>
-          <button class="btn-action btn-secondary batch-filter-btn active" id="batchBtn_all" onclick="setContactsBatchFilter('all')" style="font-size: 11px; padding: 4px 10px;">Все партии (45)</button>
-          <button class="btn-action btn-secondary batch-filter-btn" id="batchBtn_1" onclick="setContactsBatchFilter(1)" style="font-size: 11px; padding: 4px 10px;">Партия 1 (1–15)</button>
-          <button class="btn-action btn-secondary batch-filter-btn" id="batchBtn_2" onclick="setContactsBatchFilter(2)" style="font-size: 11px; padding: 4px 10px;">Партия 2 (16–30)</button>
-          <button class="btn-action btn-secondary batch-filter-btn" id="batchBtn_3" onclick="setContactsBatchFilter(3)" style="font-size: 11px; padding: 4px 10px; border-color: rgba(168, 85, 247, 0.6); color: #c084fc;">📦 Партия 3 (31–45 • Новая)</button>
+          <div id="contactsBatchButtonsBox" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <button class="btn-action btn-secondary batch-filter-btn active" id="batchBtn_all" onclick="setContactsBatchFilter('all')" style="font-size: 11px; padding: 4px 10px;">Все партии (45)</button>
+            <button class="btn-action btn-secondary batch-filter-btn" id="batchBtn_1" onclick="setContactsBatchFilter(1)" style="font-size: 11px; padding: 4px 10px;">Партия 1 (1–15)</button>
+            <button class="btn-action btn-secondary batch-filter-btn" id="batchBtn_2" onclick="setContactsBatchFilter(2)" style="font-size: 11px; padding: 4px 10px;">Партия 2 (16–30)</button>
+            <button class="btn-action btn-secondary batch-filter-btn" id="batchBtn_3" onclick="setContactsBatchFilter(3)" style="font-size: 11px; padding: 4px 10px; border-color: rgba(168, 85, 247, 0.6); color: #c084fc;">📦 Партия 3 (31–45 • Новая)</button>
+          </div>
           <span style="font-size: 11px; color: #64748b; margin-left: auto;" id="contactsCountLabel">Всего: 45 предприятий</span>
         </div>
 
@@ -1951,7 +1953,7 @@
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; background: #0f172a; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+          <div id="prevBatchButtonsBox" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
             <span style="font-size: 12px; color: #94a3b8; font-weight: 600;">Фильтр предпросмотра:</span>
             <button class="btn-action btn-secondary preview-batch-btn active" id="prevBatchBtn_all" onclick="setPreviewBatchFilter('all')" style="font-size: 11px; padding: 4px 10px;">Все партии (45)</button>
             <button class="btn-action btn-secondary preview-batch-btn" id="prevBatchBtn_1" onclick="setPreviewBatchFilter(1)" style="font-size: 11px; padding: 4px 10px;">Партия 1 (1–15)</button>
@@ -2614,8 +2616,8 @@
               <span>📁 Вкладка 4: Этап 4</span>
               <span class="stepper-stage-days">Лиды ⚡</span>
             </div>
-            <div class="stepper-stage-days">Ответы и CRM (Росатом ТВЭЛ)</div>
-            <div class="stepper-stage-count" id="stepCount_stage_4">11 заводов (Росатом и Лиды ⚡)</div>
+            <div class="stepper-stage-days">Ответы и CRM (Росатом и ММЗ)</div>
+            <div class="stepper-stage-count" id="stepCount_stage_4">2 завода (Росатом и ММЗ ⚡)</div>
           </button>
         </div>
 
@@ -2641,6 +2643,9 @@
             </button>
             <button class="btn-migrate" onclick="runAiFunnelAudit()" id="btnAiFunnelAudit" style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); border-color: #a78bfa; color: #fff; font-weight: 700; box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);">
               🧠 Qwen 2.5: AI-Супервизор
+            </button>
+            <button class="btn-migrate" onclick="forceReauditFunnel()" id="btnForceReaudit" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border-color: #38bdf8; color: #fff; font-weight: 700; box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);" title="Синхронизировать воронку по фактическим логам отправки и Qwen 2.5">
+              🔄 Синхронизировать с Qwen AI
             </button>
             <button class="btn-migrate" onclick="migrateAllToActivePage()" id="btnMigrateAllToPage" title="Мигрировать все заводы на выбранную вкладку">
               📥 Поступить все заводы на этот этап
@@ -3295,6 +3300,10 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
         campaignData = data;
+        if (campaignData.campaignState && campaignData.campaignState.isRunning && !pollInterval) {
+          campaignWasRunning = true;
+          startPolling();
+        }
       } catch (err) {
         console.warn('Загрузка через /api не удалась (локальный запуск или оффлайн), активирован встроенный реестр:', err);
         campaignData.contacts = DEFAULT_CONTACTS;
@@ -3318,31 +3327,57 @@
     let contactsBatchFilter = 'all';
     let previewBatchFilter = 'all';
 
+    function renderBatchFilterButtons() {
+      const allContacts = getContacts();
+      const batchesMap = {};
+      allContacts.forEach(c => {
+        const b = c.batch || 1;
+        batchesMap[b] = (batchesMap[b] || 0) + 1;
+      });
+      const batchNumbers = Object.keys(batchesMap).map(Number).sort((a, b) => a - b);
+      const maxBatch = batchNumbers.length > 0 ? Math.max(...batchNumbers) : 1;
+
+      const box1 = document.getElementById('contactsBatchButtonsBox');
+      if (box1) {
+        box1.innerHTML = `
+          <button class="btn-action ${contactsBatchFilter === 'all' ? 'btn-test active' : 'btn-secondary'} batch-filter-btn" id="batchBtn_all" onclick="setContactsBatchFilter('all')" style="font-size: 11px; padding: 4px 10px;">Все партии (${allContacts.length})</button>
+        ` + batchNumbers.map(b => {
+          const isLatest = b === maxBatch && b > 1;
+          const startId = (b - 1) * 15 + 1;
+          const endId = Math.min(startId + 14, allContacts.length);
+          const activeClass = contactsBatchFilter == b ? 'btn-test active' : 'btn-secondary';
+          const extraStyle = isLatest ? 'border-color: rgba(168, 85, 247, 0.6); color: #c084fc;' : '';
+          const label = isLatest ? `📦 Партия ${b} (${startId}–${endId} • Новая)` : `Партия ${b} (${startId}–${endId})`;
+          return `<button class="btn-action ${activeClass} batch-filter-btn" id="batchBtn_${b}" onclick="setContactsBatchFilter(${b})" style="font-size: 11px; padding: 4px 10px; ${extraStyle}">${label}</button>`;
+        }).join('');
+      }
+
+      const box2 = document.getElementById('prevBatchButtonsBox');
+      if (box2) {
+        box2.innerHTML = `
+          <span style="font-size: 12px; color: #94a3b8; font-weight: 600;">Фильтр предпросмотра:</span>
+          <button class="btn-action ${previewBatchFilter === 'all' ? 'btn-test active' : 'btn-secondary'} preview-batch-btn" id="prevBatchBtn_all" onclick="setPreviewBatchFilter('all')" style="font-size: 11px; padding: 4px 10px;">Все партии (${allContacts.length})</button>
+        ` + batchNumbers.map(b => {
+          const isLatest = b === maxBatch && b > 1;
+          const startId = (b - 1) * 15 + 1;
+          const endId = Math.min(startId + 14, allContacts.length);
+          const activeClass = previewBatchFilter == b ? 'btn-test active' : 'btn-secondary';
+          const extraStyle = isLatest ? 'border-color: rgba(168, 85, 247, 0.6); color: #c084fc;' : '';
+          const label = isLatest ? `📦 Партия ${b} (${startId}–${endId} • Новая)` : `Партия ${b} (${startId}–${endId})`;
+          return `<button class="btn-action ${activeClass} preview-batch-btn" id="prevBatchBtn_${b}" onclick="setPreviewBatchFilter(${b})" style="font-size: 11px; padding: 4px 10px; ${extraStyle}">${label}</button>`;
+        }).join('');
+      }
+    }
+
     function setContactsBatchFilter(batch) {
       contactsBatchFilter = batch;
-      document.querySelectorAll('.batch-filter-btn').forEach(b => {
-        b.classList.remove('active', 'btn-test');
-        b.classList.add('btn-secondary');
-      });
-      const activeBtn = document.getElementById(`batchBtn_${batch}`);
-      if (activeBtn) {
-        activeBtn.classList.add('active', 'btn-test');
-        activeBtn.classList.remove('btn-secondary');
-      }
+      renderBatchFilterButtons();
       renderStage1Tables();
     }
 
     function setPreviewBatchFilter(batch) {
       previewBatchFilter = batch;
-      document.querySelectorAll('.preview-batch-btn').forEach(b => {
-        b.classList.remove('active', 'btn-test');
-        b.classList.add('btn-secondary');
-      });
-      const activeBtn = document.getElementById(`prevBatchBtn_${batch}`);
-      if (activeBtn) {
-        activeBtn.classList.add('active', 'btn-test');
-        activeBtn.classList.remove('btn-secondary');
-      }
+      renderBatchFilterButtons();
       updateAiGenBtnLabel();
       renderStage2Preview();
     }
@@ -3360,6 +3395,7 @@
 
     // --- STAGE 1 RENDER ---
     function renderStage1Tables() {
+      renderBatchFilterButtons();
       const allContacts = getContacts();
       let contacts = allContacts;
       if (contactsBatchFilter !== 'all') {
@@ -3393,7 +3429,7 @@
         `).join('');
       }
 
-      // 1.1 Initial candidates preview (pre-fill with qualified Batch 3 plants)
+      // 1.1 Initial candidates preview (pre-fill with qualified latest batch plants)
       initAiCandidatesPreview();
 
       // 1.3 Table (Initial or MX records)
@@ -3419,8 +3455,9 @@
       if (!tableBody || !candidatesBox) return;
 
       const contacts = getContacts();
-      const b3 = contacts.filter(c => (c.batch || 1) === 3);
-      const candidates = b3.length >= 15 ? b3 : contacts.slice(-15);
+      const maxBatch = contacts.length > 0 ? Math.max(...contacts.map(c => c.batch || 1)) : 1;
+      const latestBatch = contacts.filter(c => (c.batch || 1) === maxBatch);
+      const candidates = latestBatch.length > 0 ? latestBatch : contacts.slice(-15);
       if (candidates.length === 0) return;
 
       tableBody.innerHTML = candidates.map((c, idx) => `
@@ -4980,67 +5017,35 @@
     const DEFAULT_LEADS = [
   {
     "id": 1728904500000,
-    "createdAt": "2026-10-14T12:30:00.000Z",
+    "createdAt": "2026-10-22T07:55:05.000Z",
     "contactId": 5,
     "company": "АО «Машиностроительный завод» (МСЗ Электросталь)",
-    "fio": "Отдел главного механика (Росатом ТВЭЛ)",
-    "contactFio": "Отдел главного механика (Росатом ТВЭЛ)",
+    "fio": "Отдел главного механика (Росатом ТВЭЛ) / ДОУ АО МСЗ",
+    "contactFio": "ДОУ АО МСЗ (вх. рег. № 18/17737-П от 22.10.2026)",
     "phone": "+7 (496) 577-40-00",
     "email": "zymsz@elemash.ru",
     "stage": "stage_4",
-    "status": "Запрос бланка / ТКП",
+    "status": "Зарегистрировано (вх. №18/17737-П)",
     "shelves": 5,
     "sheet": "6000x2000",
     "price": "3 850 000 ₽",
-    "notes": "В работу принимаются официальные письма: номер, дата, подпись. Готовится официальный бланк ТКП."
+    "notes": "Официальный документ зарегистрирован в АО «МСЗ» за № 18/17737-П от 22.10.2026. Ожидается распределение исполнителю."
   },
   {
-    "id": 1728990900000,
-    "createdAt": "2026-10-16T10:15:00.000Z",
-    "contactId": 3,
-    "company": "ПАО «ЗиО-Подольск» (Машиностроительный завод)",
-    "fio": "В приемную главного инженера",
-    "contactFio": "В приемную главного инженера",
-    "phone": "+7 (4967) 54-10-25",
-    "email": "zio@eatom.ru",
+    "id": 1729573277000,
+    "createdAt": "2026-10-22T05:01:17.000Z",
+    "contactId": 21,
+    "company": "АО «Мытищинский машиностроительный завод»",
+    "fio": "Ананьина Анастасия Андреевна (Делопроизводитель АО «ММЗ»)",
+    "contactFio": "Ананьина Анастасия Андреевна (вх. №К-212 от 22.10.2026)",
+    "phone": "+7 (495) 586-62-55, доб. 41802",
+    "email": "mmz-info@mmzavod.ru",
     "stage": "stage_4",
-    "status": "В работе (Расчет)",
-    "shelves": 6,
-    "sheet": "6000x2000",
-    "price": "4 350 000 ₽",
-    "notes": "Требуется усиленная нагрузка на ярус до 5.5 тн, согласование чертежей фундамента цеха."
-  },
-  {
-    "id": 1729163700000,
-    "createdAt": "2026-10-17T14:45:00.000Z",
-    "contactId": 4,
-    "company": "АО «Метровагонмаш»",
-    "fio": "Инженерно-технический департамент",
-    "contactFio": "Инженерно-технический департамент",
-    "phone": "+7 (495) 582-56-13",
-    "email": "info@metrowagonmash.ru",
-    "stage": "stage_4",
-    "status": "На согласовании у ГИ",
+    "status": "Зарегистрировано (вх. №К-212)",
     "shelves": 5,
     "sheet": "6000x2000",
     "price": "3 850 000 ₽",
-    "notes": "Запрос технико-коммерческого предложения под лазерный комплекс раскроя листа 6000 мм."
-  },
-  {
-    "id": 1729336500000,
-    "createdAt": "2026-10-19T11:20:00.000Z",
-    "contactId": 15,
-    "company": "ООО «Кингисеппский машиностроительный завод» (КМЗ)",
-    "fio": "Русин Анатолий Сергеевич (Ген. директор)",
-    "contactFio": "Русин Анатолий Сергеевич (Ген. директор)",
-    "phone": "+7 (812) 318-52-04",
-    "email": "info@kmz1.ru",
-    "stage": "stage_4",
-    "status": "Запрос ТКП",
-    "shelves": 5,
-    "sheet": "6000x2000",
-    "price": "3 850 000 ₽",
-    "notes": "Интересует размещение в цехе механической обработки, экономия 70% площади заготовительного участка."
+    "notes": "Письмо зарегистрировано за вх. №К-212 от 22.10.2026. Передано в службу главного инженера АО «ММЗ»."
   }
 ];
 
@@ -5095,7 +5100,10 @@
     function renderValidationTable() {
       const tb2 = document.getElementById('validationTableBody');
       if (!tb2) return;
-      const contacts = getContacts();
+      const allContacts = getContacts();
+      const contacts = contactsBatchFilter !== 'all'
+        ? allContacts.filter(c => (c.batch || 1) === parseInt(contactsBatchFilter, 10))
+        : allContacts;
 
       tb2.innerHTML = contacts.map(c => {
         const rawEmail = RAW_PARSED_MAP[c.id] || ("  " + (c.to_email || c.email).toUpperCase() + "  ");
@@ -6329,24 +6337,28 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
           btnStart.innerText = '▶ Продолжить рассылку';
           btnStop.style.display = 'none';
           meter.style.display = 'none';
-        } else if (sentCount >= 30) {
+        } else if (sentCount >= total) {
           badge.className = 'badge badge-green';
           badge.innerText = `РАССЫЛКА ВЫПОЛНЕНА (${sentCount}/${total})`;
           btnStart.style.display = 'none';
           btnStop.style.display = 'none';
           meter.style.display = 'none';
         } else {
+          const unsentCount = total - sentCount;
+          const nextBatch = Math.floor(sentCount / 15) + 1;
+          const nextStart = sentCount + 1;
+          const nextEnd = Math.min(sentCount + 15, total);
           badge.className = 'badge badge-gray';
-          badge.innerText = 'ОЖИДАНИЕ';
+          badge.innerText = `ОЖИДАНИЕ (${unsentCount} неотправлено)`;
           btnStart.style.display = 'inline-flex';
-          btnStart.innerText = '▶ Запустить рассылку';
+          btnStart.innerText = `▶ Запустить рассылку (Партия ${nextBatch}: заводы ${nextStart}–${nextEnd})`;
           btnStop.style.display = 'none';
           meter.style.display = 'none';
         }
       }
 
       // Progress Bar
-      const pct = Math.min(100, Math.round((sentCount / 30) * 100));
+      const pct = total > 0 ? Math.min(100, Math.round((sentCount / total) * 100)) : 0;
       const pText = document.getElementById('progressText');
       if (pText) pText.innerText = `${sentCount} / ${total} доставлено (SMTP 250 OK)`;
       const pPct = document.getElementById('progressPercent');
@@ -6415,19 +6427,21 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
     }
 
     async function resetCampaignLive() {
-      if (!confirm('Вы уверены, что хотите очистить журнал отправки и сбросить кампанию к началу?')) return;
+      if (!confirm('Сбросить очередь и таймеры рассылки? (История уже отправленных писем сохраняется)')) return;
       if (window.devLog) {
-        devLog('ACTION', 'Сброс журнала отправки (dispatch_log.json) и счетчиков кампании');
+        devLog('ACTION', 'Сброс очереди рассылки (история отправок сохранена)');
       }
       try {
         const res = await fetch('/api/campaign/reset', { method: 'POST' });
         const data = await res.json();
-        showToast('Лог рассылки сброшен!');
+        showToast('Очередь рассылки сброшена, история отправки сохранена!');
         loadCampaignData();
       } catch (err) {
         showToast('Ошибка сброса: ' + err.message, false);
       }
     }
+
+    let campaignWasRunning = false;
 
     function startPolling() {
       if (pollInterval) clearInterval(pollInterval);
@@ -6435,15 +6449,85 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
         try {
           const res = await fetch('/api/campaign/data');
           if (res.ok) {
-            campaignData = await res.json();
+            const freshData = await res.json();
+            const wasActive = campaignWasRunning || (campaignData && campaignData.campaignState && campaignData.campaignState.isRunning);
+            campaignData = freshData;
+            campaignWasRunning = Boolean(campaignData.campaignState && campaignData.campaignState.isRunning);
+
             renderStage3Dispatcher();
             renderStage4CrmAndKpi();
-            if (!campaignData.campaignState.isRunning) {
+
+            // When campaign completes (was running, now completed!)
+            if (wasActive && !campaignData.campaignState.isRunning) {
               clearInterval(pollInterval);
+              campaignWasRunning = false;
+              onCampaignCycleCompleted();
+            } else if (!campaignData.campaignState.isRunning) {
+              clearInterval(pollInterval);
+              campaignWasRunning = false;
             }
           }
         } catch {}
       }, 1500);
+    }
+
+    async function onCampaignCycleCompleted() {
+      if (window.devLog) {
+        devLog('ACTION', 'Прогон рассылки успешно завершён. Автоматическое обновление воронки и вызов Qwen AI');
+      }
+      showToast('🚀 Прогон успешно завершен! Автоматическое обновление воронки через Qwen 2.5...');
+      await loadCampaignData();
+      syncFunnelWithIncomingData(true);
+      renderStatusPanel();
+      renderStage4CrmAndKpi();
+
+      // Silent AI Supervision Audit in background
+      try {
+        const res = await fetch('/api/ai/audit-funnel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ deals: kanbanDealsState })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.decisions && data.decisions.length > 0) {
+            lastAuditDecisions = data.decisions;
+            applyAiFunnelDecisions(true);
+          }
+          showToast('🎯 Вкладки Этапа 4 автоматически актуализированы супервизором Qwen 2.5!');
+        }
+      } catch (err) {
+        console.warn('Auto AI supervision error:', err);
+      }
+    }
+
+    async function forceReauditFunnel() {
+      const btn = document.getElementById('btnForceReaudit');
+      if (btn) btn.innerHTML = '⏳ Синхронизация...';
+      try {
+        await loadCampaignData();
+        syncFunnelWithIncomingData(true);
+        renderStatusPanel();
+        renderStage4CrmAndKpi();
+
+        const res = await fetch('/api/ai/audit-funnel', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ deals: kanbanDealsState })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.decisions && data.decisions.length > 0) {
+            lastAuditDecisions = data.decisions;
+            applyAiFunnelDecisions(true);
+          }
+        }
+        showToast('✅ Воронка Этапа 4 успешно синхронизирована по фактическим логам и Qwen 2.5!');
+      } catch (err) {
+        showToast('Синхронизировано по логам: ' + err.message);
+      } finally {
+        if (btn) btn.innerHTML = '🔄 Синхронизировать с Qwen AI';
+      }
     }
 
     // --- STAGE 4 RENDER: Calculator, CRM & KPI ---
@@ -6537,69 +6621,57 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
     }
 
     function getDefaultStageForContact(c) {
-      // 1. Stage 4: CRM Leads (Росатом ТВЭЛ, ЗиО, Метровагонмаш, КМЗ)
-      const isLead = [5, 3, 4, 15].includes(c.id) || (c.company && (c.company.includes('Элемаш') || c.company.includes('ЗиО') || c.company.includes('Метровагонмаш')));
-      if (isLead) return 'stage_4';
-      // 2. Stage 3: Follow-up №2 (Главный инженер • Защита листа до 25т)
-      if ([1, 2, 6, 7, 10, 11, 25, 26, 27].includes(c.id)) return 'stage_3';
-      // 3. Stage 2: Follow-up №1 (Выгода 70% площади цеха)
-      if ([8, 9, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23].includes(c.id)) return 'stage_2';
-      // 4. Stage 1: Первичное КП
+      const leads = getLeads();
+      const logs = getLogs();
+      const lead = leads.find(l => 
+        l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
+      );
+      if (lead || c.id === 5 || c.id === 21) return 'stage_4';
+
+      const plantLogs = logs.filter(l => 
+        l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
+      );
+      const t3 = plantLogs.find(l => l.stage === 'followup_2' || l.touchNumber === 3);
+      if (t3) return 'stage_3';
+
+      const t2 = plantLogs.find(l => l.stage === 'followup_1' || l.touchNumber === 2);
+      if (t2) {
+        const sentTime = new Date(t2.timestamp || t2.sentAt || Date.now()).getTime();
+        const elapsedDays = Math.max(0, Math.floor((Date.now() - sentTime) / (1000 * 60 * 60 * 24)));
+        return elapsedDays >= 4 ? 'stage_3' : 'stage_2';
+      }
+
+      const t1 = plantLogs.slice().reverse().find(l => l.stage === 'touch_1' || l.touchNumber === 1 || (!l.stage && l.status === 'SENT'));
+      if (t1) {
+        const sentTime = new Date(t1.timestamp || t1.sentAt || Date.now()).getTime();
+        const elapsedDays = Math.max(0, Math.floor((Date.now() - sentTime) / (1000 * 60 * 60 * 24)));
+        return elapsedDays >= 3 ? 'stage_2' : 'stage_1';
+      }
+
       return 'stage_1';
     }
 
     function initKanbanDeals() {
       // Clear legacy cache versions
       try {
+        localStorage.removeItem('chzm_kanban_deals_v8');
+        localStorage.removeItem('chzm_kanban_deals_v7');
+        localStorage.removeItem('chzm_kanban_deals_v6');
         localStorage.removeItem('chzm_kanban_deals_v5');
         localStorage.removeItem('chzm_kanban_deals_v4');
         localStorage.removeItem('chzm_kanban_deals_v3');
         localStorage.removeItem('chzm_kanban_deals_v2');
       } catch {}
 
-      const saved = localStorage.getItem('chzm_kanban_deals_v6');
+      const saved = localStorage.getItem('chzm_kanban_deals_v9');
       const contacts = getContacts(); // Load all accumulated factories across all batches
 
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) {
-            // Verify that all 4 stages are populated (healthy distribution)
-            const countS1 = parsed.filter(d => d.stage === 'stage_1').length;
-            const countS2 = parsed.filter(d => d.stage === 'stage_2').length;
-            const countS3 = parsed.filter(d => d.stage === 'stage_3').length;
-            const countS4 = parsed.filter(d => d.stage === 'stage_4').length;
-
-            const isHealthy = countS1 > 0 && countS2 > 0 && countS3 > 0 && countS4 > 0;
-
-            const dealMap = new Map(parsed.map(d => [d.id, d]));
-            kanbanDealsState = contacts.map(c => {
-              const existing = dealMap.get(c.id);
-              const fallbackStage = getDefaultStageForContact(c);
-              const finalStage = (existing && isHealthy) 
-                ? normalizeStage(existing.stage)
-                : fallbackStage;
-
-              const isLead = finalStage === 'stage_4';
-              return {
-                id: c.id,
-                batch: c.batch || 1,
-                batch_label: c.batch_label || `Партия ${c.batch || 1}`,
-                company: c.company || (existing && existing.company),
-                fio: c.fio || (existing && existing.fio),
-                pos: c.position || c.pos || (existing && existing.pos) || (isLead ? 'Руководитель' : 'ЛПР завода'),
-                region: c.region || (existing && existing.region),
-                region_key: c.region_key || (existing && existing.region_key),
-                stage: finalStage,
-                price: (existing && existing.price) || (c.id === 3 ? 4350000 : 3850000),
-                shelves: (existing && existing.shelves) || (c.id === 3 ? 6 : 5),
-                sheet: '6000x2000',
-                daysText: isLead ? '⚡ CRM Лид: Запрос официального бланка ТКП' : (finalStage === 'stage_3' ? '⏱️ День 7–10: Главный инженер' : (finalStage === 'stage_2' ? '⏱️ День 3–5: Follow-up №1' : '⏱️ День 0 (Доставлено)')),
-                isResponse: Boolean(isLead),
-                notes: isLead ? 'В работе: подготовка ТКП модели 16112.200' : ''
-              };
-            });
-            saveKanbanState();
+          if (Array.isArray(parsed) && parsed.length === contacts.length) {
+            kanbanDealsState = parsed;
+            syncFunnelWithIncomingData();
             return;
           }
         } catch {}
@@ -6618,33 +6690,35 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
           region: c.region,
           region_key: c.region_key,
           stage,
-          price: c.id === 3 ? 4350000 : 3850000,
-          shelves: c.id === 3 ? 6 : 5,
+          price: 3850000,
+          shelves: 5,
           sheet: '6000x2000',
-          daysText: isLead ? '⚡ CRM Лид: Запрос официального бланка ТКП' : (stage === 'stage_3' ? '⏱️ День 7–10: Главный инженер' : (stage === 'stage_2' ? '⏱️ День 3–5: Follow-up №1' : '⏱️ День 0 (Доставлено)')),
+          daysText: isLead ? (c.id === 21 ? '⚡ Входящее: вх. №К-212 (ММЗ)' : '⚡ Входящее: вх. №18/17737-П (Росатом)') : (stage === 'stage_3' ? '⏱️ День 7–10: Главный инженер' : (stage === 'stage_2' ? '⏱️ День 3–5: Follow-up №1' : '⏱️ День 0 (Доставлено)')),
           isResponse: Boolean(isLead),
-          notes: isLead ? 'В работе: подготовка ТКП модели 16112.200' : ''
+          notes: isLead ? (c.id === 21 ? 'Зарегистрировано в ДОУ АО «ММЗ» №К-212' : 'Зарегистрировано в ДОУ Росатом ТВЭЛ №18/17737-П') : ''
         };
       });
 
+      syncFunnelWithIncomingData(true);
       saveKanbanState();
     }
 
     function saveKanbanState() {
       try {
-        localStorage.setItem('chzm_kanban_deals_v6', JSON.stringify(kanbanDealsState));
+        localStorage.setItem('chzm_kanban_deals_v9', JSON.stringify(kanbanDealsState));
       } catch {}
     }
 
     function resetKanbanDefault() {
-      if (!confirm('Сбросить распределение всех предприятий по воронке к исходному состоянию?')) return;
+      if (!confirm('Сбросить распределение всех предприятий по воронке к фактическому состоянию по логам?')) return;
+      localStorage.removeItem('chzm_kanban_deals_v9');
+      localStorage.removeItem('chzm_kanban_deals_v8');
+      localStorage.removeItem('chzm_kanban_deals_v7');
       localStorage.removeItem('chzm_kanban_deals_v6');
       localStorage.removeItem('chzm_kanban_deals_v5');
-      localStorage.removeItem('chzm_kanban_deals_v4');
-      localStorage.removeItem('chzm_kanban_deals_v3');
       initKanbanDeals();
       renderStatusPanel();
-      showToast('Воронка предприятий сброшена к исходным стадиям!');
+      showToast('Воронка предприятий пересчитана по логам отправки!');
     }
 
     function filterKanban(filterType, btn) {
@@ -7027,7 +7101,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
     }
 
     // --- LIVE SYNC: Connect Funnel with Stage 1 Contacts, Stage 3 Dispatch Log and Stage 4 CRM Leads ---
-    function syncFunnelWithIncomingData() {
+    function syncFunnelWithIncomingData(forceRecalculate = false) {
       if (!Array.isArray(kanbanDealsState) || kanbanDealsState.length === 0) {
         initKanbanDeals();
       }
@@ -7039,7 +7113,6 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
       contacts.forEach(c => {
         let deal = kanbanDealsState.find(d => d.id === c.id);
         if (!deal) {
-          const fallbackStage = getDefaultStageForContact(c);
           deal = {
             id: c.id,
             batch: c.batch || 1,
@@ -7049,13 +7122,13 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
             pos: c.position || c.pos || 'ЛПР завода',
             region: c.region,
             region_key: c.region_key,
-            stage: fallbackStage,
+            stage: 'stage_1',
             price: c.id === 3 ? 4350000 : 3850000,
             shelves: c.id === 3 ? 6 : 5,
             sheet: '6000x2000',
-            daysText: fallbackStage === 'stage_4' ? '⚡ CRM Лид: Запрос официального бланка ТКП' : (fallbackStage === 'stage_3' ? '⏱️ День 7–10: Главный инженер' : (fallbackStage === 'stage_2' ? '⏱️ День 3–5: Follow-up №1' : '⏱️ День 0 (Доставлено)')),
-            isResponse: fallbackStage === 'stage_4',
-            notes: fallbackStage === 'stage_4' ? 'В работе: подготовка ТКП модели 16112.200' : ''
+            daysText: '⏱️ День 0 (Доставлено)',
+            isResponse: false,
+            notes: ''
           };
           kanbanDealsState.push(deal);
         } else {
@@ -7068,65 +7141,76 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
           deal.batch_label = c.batch_label || deal.batch_label || `Партия ${deal.batch || 1}`;
         }
 
-        // 1. Sync with Stage 3 Dispatch Log (Live campaign sends)
-        let logEntry = logs.slice().reverse().find(l => l.contactId && l.contactId === c.id);
-        if (!logEntry) {
-          logEntry = logs.slice().reverse().find(l => 
-            (l.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase()) ||
-            (l.targetEmail && c.to_email && l.targetEmail.trim().toLowerCase() === c.to_email.trim().toLowerCase()) ||
-            (l.email && c.to_email && l.email.trim().toLowerCase() === c.to_email.trim().toLowerCase())
-          );
-        }
+        // 1. Leads Ground Truth (Stage 4)
+        let leadEntry = leads.find(l => 
+          l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
+        );
+        const isVerifiedLead = (c.id === 5 || c.id === 21);
 
-        if (logEntry && logEntry.status === 'SENT') {
-          deal.sentLog = logEntry;
-          const sentDateObj = new Date(logEntry.timestamp || logEntry.sentAt || Date.now());
-          const sentTime = sentDateObj.getTime();
-          const elapsedDays = Math.max(0, Math.floor((Date.now() - sentTime) / (1000 * 60 * 60 * 24)));
-          deal.elapsedDays = elapsedDays;
-
-          const isElemash = (c.company && c.company.includes('Элемаш')) || (c.to_email && c.to_email.includes('elemash')) || c.id === 5;
-          const isF1 = logEntry.stage === 'followup_1' || logEntry.touchNumber === 2;
-
-          // If Follow-up #1 was sent, ensure stage is at least stage_2
-          if (isF1 && deal.stage === 'stage_1') {
-            deal.stage = 'stage_2';
-            deal.daysText = '🚀 Follow-up №1 отправлен • Выгода 70% площади цеха';
-          }
-
-          // Advance forward only if calendar days warrant it (NEVER demote backward!)
-          if (!deal.isResponse && !deal.leadStatus && !isElemash) {
-            if (elapsedDays >= 14 && deal.stage !== 'stage_4') {
-              deal.stage = 'stage_4';
-              deal.daysText = `⏱️ Прошло ${elapsedDays} дн. • Этап 4 (День 14–21: Финал)`;
-            } else if (elapsedDays >= 7 && (deal.stage === 'stage_1' || deal.stage === 'stage_2')) {
-              deal.stage = 'stage_3';
-              deal.daysText = `⏱️ Прошло ${elapsedDays} дн. • Этап 3 (День 7–10: Follow-up №2)`;
-            } else if (elapsedDays >= 3 && deal.stage === 'stage_1') {
-              deal.stage = 'stage_2';
-              deal.daysText = `⏱️ Прошло ${elapsedDays} дн. • Этап 2 (День 3–5: Follow-up №1)`;
-            }
-          }
-        }
-
-        // 2. Sync with Stage 4 Leads (leads.json / Qualification questionnaire)
-        let leadEntry = leads.find(l => l.contactId && l.contactId === c.id);
-        if (!leadEntry) {
-          leadEntry = leads.find(l => 
-            (l.company && l.company.trim().toLowerCase().includes(c.company.trim().toLowerCase())) ||
-            (c.company && c.company.trim().toLowerCase().includes(l.company.trim().toLowerCase()))
-          );
-        }
-        if (leadEntry) {
+        if (leadEntry || isVerifiedLead) {
           deal.stage = 'stage_4';
           deal.isResponse = true;
-          const cleanPrice = parseInt((leadEntry.price || '0').replace(/\D/g, ''), 10);
-          if (cleanPrice > 0) deal.price = cleanPrice;
-          if (leadEntry.shelves) deal.shelves = Number(leadEntry.shelves);
-          if (leadEntry.sheet) deal.sheet = leadEntry.sheet;
-          deal.leadStatus = leadEntry.status;
-          deal.daysText = `⚡ CRM Лид: ${leadEntry.status || 'В работе'}`;
-          if (leadEntry.notes) deal.notes = leadEntry.notes;
+          if (leadEntry) {
+            const cleanPrice = parseInt((leadEntry.price || '0').replace(/\D/g, ''), 10);
+            if (cleanPrice > 0) deal.price = cleanPrice;
+            if (leadEntry.shelves) deal.shelves = Number(leadEntry.shelves);
+            if (leadEntry.sheet) deal.sheet = leadEntry.sheet;
+            deal.leadStatus = leadEntry.status;
+            deal.daysText = `⚡ CRM Лид: ${leadEntry.status || 'Запрос ТКП'}`;
+            if (leadEntry.notes) deal.notes = leadEntry.notes;
+          } else if (c.id === 21) {
+            deal.leadStatus = 'Зарегистрировано (вх. №К-212)';
+            deal.daysText = '⚡ CRM Лид: Зарегистрировано за вх. №К-212 (ММЗ)';
+            deal.notes = 'Письмо зарегистрировано за вх. №К-212 от 22.10.2026. Передано в службу главного инженера АО «ММЗ».';
+          } else {
+            deal.leadStatus = 'Зарегистрировано (вх. №18/17737-П)';
+            deal.daysText = '⚡ CRM Лид: Запрос официального бланка ТКП (Росатом ТВЭЛ)';
+            deal.notes = 'Официальный документ зарегистрирован в АО «МСЗ» за № 18/17737-П от 22.10.2026. Ожидается распределение исполнителю.';
+          }
+          return;
+        }
+
+        // 2. Dispatch Logs Ground Truth (Stage 1, 2, 3)
+        const plantLogs = logs.filter(l => 
+          l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
+        );
+        const t3 = plantLogs.find(l => l.stage === 'followup_2' || l.touchNumber === 3);
+        const t2 = plantLogs.find(l => l.stage === 'followup_1' || l.touchNumber === 2);
+        const t1 = plantLogs.slice().reverse().find(l => l.stage === 'touch_1' || l.touchNumber === 1 || (!l.stage && l.status === 'SENT'));
+
+        deal.isResponse = false;
+
+        if (t3) {
+          deal.stage = 'stage_3';
+          deal.daysText = '🚀 Follow-up №2 отправлен • Защита листа до 25т';
+          deal.sentLog = t3;
+        } else if (t2) {
+          deal.sentLog = t2;
+          const sentDateObj = new Date(t2.timestamp || t2.sentAt || Date.now());
+          const elapsedDays = Math.max(0, Math.floor((Date.now() - sentDateObj.getTime()) / (1000 * 60 * 60 * 24)));
+          deal.elapsedDays = elapsedDays;
+          if (elapsedDays >= 4) {
+            deal.stage = 'stage_3';
+            deal.daysText = `⏱️ Прошло ${elapsedDays} дн. после Follow-up №1 • Переход на Этап 3 (День 7–10)`;
+          } else {
+            deal.stage = 'stage_2';
+            deal.daysText = `🚀 Follow-up №1 отправлен • Выгода 70% площади цеха (${elapsedDays} дн. назад)`;
+          }
+        } else if (t1) {
+          deal.sentLog = t1;
+          const sentDateObj = new Date(t1.timestamp || t1.sentAt || Date.now());
+          const elapsedDays = Math.max(0, Math.floor((Date.now() - sentDateObj.getTime()) / (1000 * 60 * 60 * 24)));
+          deal.elapsedDays = elapsedDays;
+          if (elapsedDays >= 3) {
+            deal.stage = 'stage_2';
+            deal.daysText = `⏱️ Прошло ${elapsedDays} дн. после КП • Готов к Follow-up №1 (День 3–5)`;
+          } else {
+            deal.stage = 'stage_1';
+            deal.daysText = `✉️ Первичное КП доставлено (${elapsedDays} дн. назад • День 0–2)`;
+          }
+        } else {
+          deal.stage = 'stage_1';
+          deal.daysText = '⏱️ В очереди на первичное КП (День 0)';
         }
       });
 
@@ -7176,7 +7260,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
         const countEl = document.getElementById(`stepCount_${s.id}`);
         if (countEl) {
           if (s.id === 'stage_4' && count > 0) {
-            countEl.innerText = `${count} заводов (Росатом и Лиды ⚡)`;
+            countEl.innerText = `${count} завода (Росатом и ММЗ ⚡)`;
           } else if (s.id === 'stage_2') {
             countEl.innerText = `${count} заводов на Follow-up №1 🚀`;
           } else {
@@ -7759,7 +7843,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
         const res = await fetch('/api/ai/apply-batch', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contacts: aiCandidates.slice(0, 15), resetLog: true })
+          body: JSON.stringify({ contacts: aiCandidates.slice(0, 15) })
         });
         const data = await res.json();
         if (data.ok) {
@@ -7825,6 +7909,10 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
 
           renderValidationTable();
           await loadCampaignData();
+          const maxBatch = (campaignData && campaignData.contacts && campaignData.contacts.length > 0)
+            ? Math.max(...campaignData.contacts.map(c => c.batch || 1)) : 1;
+          setContactsBatchFilter(maxBatch);
+          setPreviewBatchFilter(maxBatch);
 
           if (!options.silent) {
             showToast(`Партия из ${data.count} заводов загружена во все вкладки (1.2, 1.3, 1.4 и воронку)!`);
@@ -8069,7 +8157,7 @@ ${item.recommendedMessage}
       el.style.display = el.style.display === 'none' ? 'block' : 'none';
     }
 
-    function applyAiFunnelDecisions() {
+    function applyAiFunnelDecisions(silent = false) {
       if (!lastAuditDecisions || lastAuditDecisions.length === 0) return;
 
       lastAuditDecisions.forEach(dec => {
@@ -8086,11 +8174,13 @@ ${item.recommendedMessage}
 
       saveKanbanState();
       renderStatusPanel();
-      closeAiFunnelAuditModal();
-      showToast('⚡ Воронка успешно синхронизирована с выводами Qwen 2.5! 14 заводов на Этапе 2, Росатом — в Лидах!');
+      if (!silent) {
+        closeAiFunnelAuditModal();
+        showToast(`⚡ Воронка успешно синхронизирована с выводами Qwen 2.5 (${lastAuditDecisions.length} заводов)!`);
+      }
 
       if (window.devLog) {
-        devLog('ACTION', 'Применен вердикт Qwen 2.5 ко всей воронке 15 заводов');
+        devLog('ACTION', `Применен вердикт Qwen 2.5 ко всей воронке (${lastAuditDecisions.length} заводов)`);
       }
     }
 
@@ -8105,6 +8195,8 @@ ${item.recommendedMessage}
       const modal = document.getElementById('aiFunnelAuditModalBackdrop');
       if (modal) modal.style.display = 'none';
     }
+
+    window.forceReauditFunnel = forceReauditFunnel;
 
     window.openAiSequenceModal = openAiSequenceModal;
     window.closeAiSequenceModal = closeAiSequenceModal;

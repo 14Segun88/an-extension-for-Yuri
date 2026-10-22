@@ -647,26 +647,59 @@ export async function generateTouchpointSequence({ company, fio, position, painP
 export async function auditFunnelWithAi({ deals = [], logs = [], leads = [] } = {}) {
   const aiStatus = await checkLmStudioStatus();
 
-  // Prepare input summary of factories
-  const items = deals.slice(0, 15).map(d => {
-    // Check if there is an inbound CRM lead / answer
+  // Prepare input summary of all factories
+  const items = deals.map(d => {
+    // Check if there is an inbound CRM lead / answer (strictly by contactId)
     const lead = leads.find(l => 
-      (l.company && d.company && l.company.toLowerCase().includes(d.company.toLowerCase())) ||
-      (d.company && l.company && d.company.toLowerCase().includes(l.company.toLowerCase()))
+      l.contactId ? (l.contactId === d.id) : (l.company && d.company && l.company.trim().toLowerCase() === d.company.trim().toLowerCase())
     );
 
-    // Factory 5 special handling (МСЗ Элемаш / Росатом)
+    // Factory 5 special handling (МСЗ Элемаш / Росатом ТВЭЛ)
     const isElemash = d.id === 5;
     const responseText = isElemash 
       ? 'Заводоуправление Росатом (АО «МСЗ» Элемаш): "В работу принимаются официальные письма: номер, дата, подпись"'
       : (lead ? (lead.notes || lead.status || 'Получен входящий отклик') : null);
 
-    const logEntry = logs.find(l => 
-      (l.contactId === d.id) || 
-      (l.company && d.company && l.company.trim().toLowerCase() === d.company.trim().toLowerCase())
+    const plantLogs = logs.filter(l => 
+      l.contactId ? (l.contactId === d.id) : (l.company && d.company && l.company.trim().toLowerCase() === d.company.trim().toLowerCase())
     );
-    const sentTime = logEntry ? new Date(logEntry.timestamp || logEntry.sentAt || '2026-10-14T13:52:00Z').getTime() : Date.now();
-    const elapsedDays = Math.max(0, Math.floor((Date.now() - sentTime) / (1000 * 60 * 60 * 24)));
+
+    const t3 = plantLogs.find(l => l.stage === 'followup_2' || l.touchNumber === 3);
+    const t2 = plantLogs.find(l => l.stage === 'followup_1' || l.touchNumber === 2);
+    const t1 = plantLogs.slice().reverse().find(l => l.stage === 'touch_1' || l.touchNumber === 1 || (!l.stage && l.status === 'SENT'));
+
+    const now = Date.now();
+    let computedStage = 'stage_1';
+    let statusText = 'В очереди на первичное КП';
+    let elapsedDays = 0;
+
+    if (isElemash || lead) {
+      computedStage = 'stage_4';
+      statusText = isElemash ? '⚡ Ответ в CRM (Росатом Элемаш: Запрос бланка)' : `⚡ Лид в CRM: ${lead.status || 'Запрос ТКП'}`;
+    } else if (t3) {
+      computedStage = 'stage_3';
+      statusText = 'Follow-up №2 отправлен • Защита листа до 25т';
+    } else if (t2) {
+      const sentTime = new Date(t2.timestamp || t2.sentAt || now).getTime();
+      elapsedDays = Math.max(0, Math.floor((now - sentTime) / (1000 * 60 * 60 * 24)));
+      if (elapsedDays >= 4) {
+        computedStage = 'stage_3';
+        statusText = `⏱️ Прошло ${elapsedDays} дн. после Follow-up №1 • Переход на Этап 3 (День 7–10)`;
+      } else {
+        computedStage = 'stage_2';
+        statusText = `🚀 Follow-up №1 отправлен • Выгода 70% площади (${elapsedDays} дн. назад)`;
+      }
+    } else if (t1) {
+      const sentTime = new Date(t1.timestamp || t1.sentAt || now).getTime();
+      elapsedDays = Math.max(0, Math.floor((now - sentTime) / (1000 * 60 * 60 * 24)));
+      if (elapsedDays >= 3) {
+        computedStage = 'stage_2';
+        statusText = `⏱️ Прошло ${elapsedDays} дн. после КП • Готов к Follow-up №1 (День 3–5)`;
+      } else {
+        computedStage = 'stage_1';
+        statusText = `✉️ Первичное КП доставлено (${elapsedDays} дн. назад • День 0–2)`;
+      }
+    }
 
     return {
       id: d.id,
@@ -676,43 +709,60 @@ export async function auditFunnelWithAi({ deals = [], logs = [], leads = [] } = 
       hasReply: Boolean(responseText),
       responseText,
       elapsedDays,
-      currentStage: d.stage || 'stage_1'
+      currentStage: computedStage,
+      statusText
     };
   });
 
-  // Base decisions computed for all 15 factories
+  // Base decisions computed for all factories
   const defaultDecisions = items.map(it => {
     if (it.hasReply) {
       return {
         id: it.id,
         company: it.company,
         stage: 'stage_4',
-        status: '⚡ Ответ в CRM (Росатом Элемаш)',
-        badge: 'CRM Ответ',
+        status: it.statusText,
+        badge: 'CRM Лид / Ответ',
         badgeColor: '#f59e0b',
-        decision: '🛑 Обычный follow-up заморожен! Заводоуправление требует официальное обращение ЧЗМ с исходящим номером и печатью директора.',
-        nextAction: 'Подготовить официальное письмо ЧЗМ на бланке с печатью и номером',
-        recommendedMessage: `В канцелярию АО «МСЗ» (ПАО «ТВЭЛ» / Росатом)\nИсх. № 18/10-ЧЗМ от 18.10.2026\n\nУважаемое руководство АО «МСЗ»!\n\nВ ответ на Ваше обращение направляем официальное коммерческое предложение Чайковского завода «Механика» на поставку электромеханического стеллажа грузоподъемностью 25 тонн для механизированного хранения листового металла...\n\nС уважением,\nГенеральный директор ЧЗ «Механика»`
+        decision: it.id === 5 
+          ? '🛑 Обычный follow-up заморожен! Заводоуправление Росатома требует официальное обращение ЧЗМ с исходящим номером и печатью директора.'
+          : '⚡ Зафиксирован входящий интерес в CRM. Подготовить детализированное ТКП под параметры станков заказчика.',
+        nextAction: it.id === 5 ? 'Подготовить официальное письмо ЧЗМ на бланке с печатью и номером' : 'Согласовать спецификацию и чертежи',
+        recommendedMessage: it.id === 5 
+          ? `В канцелярию АО «МСЗ» (ПАО «ТВЭЛ» / Росатом)\nИсх. № 18/10-ЧЗМ от 18.10.2026\n\nУважаемое руководство АО «МСЗ»!\n\nВ ответ на Ваше обращение направляем официальное коммерческое предложение Чайковского завода «Механика» на поставку электромеханического стеллажа грузоподъемностью 25 тонн для механизированного хранения листового металла...\n\nС уважением,\nГенеральный директор ЧЗ «Механика»`
+          : `Здравствуйте, ${it.fio}!\n\nБлагодарим за обратную связь. Направляем расчет окупаемости и чертежи электромеханического стеллажа ЧЗМ 25т под требования ${it.company}.`
       };
     }
-    const targetStage = it.elapsedDays >= 7 ? 'stage_3' : (it.elapsedDays >= 3 ? 'stage_2' : 'stage_1');
-    const touchName = targetStage === 'stage_3' ? 'Follow-up №2 (Экономика и площадь)' : 'Follow-up №1 (Вопрос по станкам раскроя)';
+
+    const touchName = it.currentStage === 'stage_3' 
+      ? 'Follow-up №2 (Экономика и защита листа)' 
+      : (it.currentStage === 'stage_2' ? 'Follow-up №1 (Вопрос по станкам раскроя)' : 'Первичное КП (День 0–2)');
+
     return {
       id: it.id,
       company: it.company,
-      stage: targetStage,
-      status: `⏱️ Прошло ${it.elapsedDays} дн. без ответа`,
-      badge: targetStage === 'stage_2' ? 'Этап 2 (Follow-up 1)' : (targetStage === 'stage_3' ? 'Этап 3' : 'Этап 1'),
-      badgeColor: targetStage === 'stage_2' ? '#10b981' : (targetStage === 'stage_3' ? '#8b5cf6' : '#3b82f6'),
-      decision: `С момента КП прошло ${it.elapsedDays} дня, ответа нет. Переход на ${touchName}.`,
-      nextAction: `Отправить ${touchName}`,
-      recommendedMessage: targetStage === 'stage_3'
+      stage: it.currentStage,
+      status: it.statusText,
+      badge: it.currentStage === 'stage_2' ? 'Этап 2 (Follow-up 1)' : (it.currentStage === 'stage_3' ? 'Этап 3' : 'Этап 1 (День 0–2)'),
+      badgeColor: it.currentStage === 'stage_2' ? '#10b981' : (it.currentStage === 'stage_3' ? '#8b5cf6' : '#3b82f6'),
+      decision: it.currentStage === 'stage_1'
+        ? `Первичное КП отправлено недавно (${it.statusText}). Завод находится в режиме выдержки паузы (День 0–2).`
+        : `Прошло ${it.elapsedDays} дн. без ответа. Переход на ${touchName}.`,
+      nextAction: it.currentStage === 'stage_1' ? 'Ожидать 3 дня перед Follow-up №1' : `Отправить ${touchName}`,
+      recommendedMessage: it.currentStage === 'stage_3'
         ? `Здравствуйте, ${it.fio}!\n\nНа аналогичных машиностроительных производствах внедрение электромеханического стеллажа 25т высвободило до 70% площади цеха и исключило замятие кромок при кантовании листов кран-балкой. Готовы предоставить расчет окупаемости для ${it.company}.`
-        : `Здравствуйте, ${it.fio}!\n\nУдалось ли ознакомиться со спецификацией стеллажа ЧЗМ 25т для ${it.company}?\nПодскажите, какие форматы листа (1500х3000 или более) и какое оборудование раскроя (лазер/плазма) используются в вашем цехе?`
+        : (it.currentStage === 'stage_2'
+          ? `Здравствуйте, ${it.fio}!\n\nУдалось ли ознакомиться со спецификацией стеллажа ЧЗМ 25т для ${it.company}?\nПодскажите, какие форматы листа (1500х3000 или более) и какое оборудование раскроя (лазер/плазма) используются в вашем цехе?`
+          : `Здравствуйте, ${it.fio}!\n\nНаправляем материалы по электромеханическому стеллажу 25т для ${it.company}.`)
     };
   });
 
-  let executiveSummary = 'Автоматический анализ воронки: 1 завод (АО «МСЗ» Росатом) переведен на Этап 4 в связи с входящим требованием официального бланка; 14 заводов ожидают ответа 4 дня и квалифицированы на Этап 2 (Follow-up №1 по парку станков раскроя).';
+  const countS4 = defaultDecisions.filter(d => d.stage === 'stage_4').length;
+  const countS3 = defaultDecisions.filter(d => d.stage === 'stage_3').length;
+  const countS2 = defaultDecisions.filter(d => d.stage === 'stage_2').length;
+  const countS1 = defaultDecisions.filter(d => d.stage === 'stage_1').length;
+
+  let executiveSummary = `Автоматический AI-аудит ${deals.length} предприятий: ${countS4} завода в Лидах CRM (Этап 4, включая АО «МСЗ» Росатом ТВЭЛ); ${countS2} заводов на Этапе 2 (Follow-up №1 отправлен 19.10); ${countS1} заводов на Этапе 1 (включая только что отправленную Партию 3, режим ожидания День 0–2).`;
 
   if (!aiStatus.ok) {
     return {
