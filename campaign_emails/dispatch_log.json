@@ -1481,5 +1481,213 @@
       "krantehpto@list.ru"
     ],
     "timestamp": "2026-10-23T13:40:30.848Z"
+  },
+  {
+    "contactId": 1,
+    "company": "ООО «Кингисеппский машиностроительный завод» (КМЗ)",
+    "targetEmail": "info@kmz1.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: Для ООО «Кингисеппский машиностроительный завод» (КМЗ): Электромеханический стеллаж 25 тн для хранения листового металла (КП ЧЗ «Механика»)",
+    "messageId": "<fe65b582-bcf6-717a-f76d-d1f29f562675@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "info@kmz1.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:04:26.110Z"
+  },
+  {
+    "contactId": 2,
+    "company": "ООО «Петербургский Машиностроительный Завод»",
+    "targetEmail": "spmz@mashzavod.su",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера ООО «Петербургский Машиностроительный Завод»: Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<0f7a8288-0e6f-543b-d1ea-b9085deb381a@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "spmz@mashzavod.su",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:05:26.079Z"
+  },
+  {
+    "contactId": 3,
+    "company": "ПАО «ЗиО-Подольск» (Машиностроительный завод)",
+    "targetEmail": "zio@eatom.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера ПАО «ЗиО-Подольск» (Машиностроительный завод): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<d09fef48-6c7f-9b23-e541-64aadcb8d044@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "zio@eatom.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:06:02.112Z"
+  },
+  {
+    "contactId": 4,
+    "company": "АО «Метровагонмаш»",
+    "targetEmail": "info@metrowagonmash.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера АО «Метровагонмаш»: Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<82cedfe6-36da-06cd-d551-9840bbd0a800@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "info@metrowagonmash.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:06:56.396Z"
+  },
+  {
+    "contactId": 6,
+    "company": "Завод «Стальтех»",
+    "targetEmail": "info@stalteh.com",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера Завод «Стальтех»: Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<224c6f78-b4a3-c792-172e-9e3095e92843@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "info@stalteh.com",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:07:32.771Z"
+  },
+  {
+    "contactId": 7,
+    "company": "ООО «Лазер Контур»",
+    "targetEmail": "info@lasercontur.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: Для производства ООО «Лазер Контур»: Оптимизация хранения и подачи листового проката (Стеллаж 25 тн ЧЗМ)",
+    "messageId": "<d4e5bea2-ca53-a047-92f8-406bf65c3a5f@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "info@lasercontur.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:08:26.364Z"
+  },
+  {
+    "contactId": 8,
+    "company": "Воскресенский завод лазерной обработки металла (ВЗ-ЛОМ)",
+    "targetEmail": "info@vz-lom.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера Воскресенский завод лазерной обработки металла (ВЗ-ЛОМ): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<d26ff595-eb33-d509-fe31-8d572009c387@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "info@vz-lom.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:09:02.701Z"
+  },
+  {
+    "contactId": 9,
+    "company": "ООО «Мир металлоконструкций» (ММК)",
+    "targetEmail": "mmk-msp@yandex.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: Для ООО «Мир металлоконструкций» (ММК): Электромеханический стеллаж 25 тн для хранения листового металла (КП ЧЗ «Механика»)",
+    "messageId": "<4abac3ae-cac7-bc0c-719d-5990df75a61f@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "mmk-msp@yandex.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:09:39.691Z"
+  },
+  {
+    "contactId": 10,
+    "company": "ЗАО «Завод Металлоконструкций» («ЗАВОД МК»)",
+    "targetEmail": "zakaz@zavod-mk.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: Для ЗАО «Завод Металлоконструкций» («ЗАВОД МК»): Электромеханический стеллаж 25 тн для хранения листового металла (КП ЧЗ «Механика»)",
+    "messageId": "<857a5b3a-bbca-7e1c-8bd1-2dc3e405891d@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "zakaz@zavod-mk.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:10:26.318Z"
+  },
+  {
+    "contactId": 11,
+    "company": "АО «Сергиево-Посадский машиностроительный завод»",
+    "targetEmail": "sbyt@spmz.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: Для АО «Сергиево-Посадский машиностроительный завод»: Электромеханический стеллаж 25 тн для хранения листового металла (КП ЧЗ «Механика»)",
+    "messageId": "<77a69c37-c95e-3b74-8f85-bf174afc4551@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "sbyt@spmz.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:11:02.862Z"
+  },
+  {
+    "contactId": 12,
+    "company": "ООО «КонкордМеталл»",
+    "targetEmail": "mail@c-met.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: Для производства ООО «КонкордМеталл»: Оптимизация хранения и подачи листового проката (Стеллаж 25 тн ЧЗМ)",
+    "messageId": "<8cd9f67f-5b7f-865b-4993-997424a2280c@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "mail@c-met.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:11:39.172Z"
+  },
+  {
+    "contactId": 13,
+    "company": "ООО «Металлист»",
+    "targetEmail": "info@metallistspb.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера ООО «Металлист»: Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<ee1f789a-f0af-25f0-76b6-bd97219b619c@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "info@metallistspb.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:12:26.228Z"
+  },
+  {
+    "contactId": 15,
+    "company": "ПАО «Красногорский завод им. С.А. Зверева» (КМЗ)",
+    "targetEmail": "kmz259@zenit-kmz.ru",
+    "stage": "followup_2",
+    "touchNumber": 3,
+    "subject": "Re: В службу главного инженера ПАО «Красногорский завод им. С.А. Зверева» (КМЗ): Электромеханический стеллаж 25 тн для листового металла (КП ЧЗМ)",
+    "messageId": "<3667d6b5-ce69-2a2a-9f94-1124e3d87b50@mehan59.ru>",
+    "status": "SENT",
+    "accepted": [
+      "kmz259@zenit-kmz.ru",
+      "pdu@mehan59.ru",
+      "krantehpto@list.ru"
+    ],
+    "timestamp": "2026-10-23T14:13:02.734Z"
   }
 ]
