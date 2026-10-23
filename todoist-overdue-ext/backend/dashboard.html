@@ -2533,7 +2533,10 @@
             <div class="card-title">📊 Цикл 4.0: Воронка сделок ЧЗМ (Лимит: ровно 15 заводов)</div>
             <div class="card-desc">Контроль прохождения 15 предприятий по этапам с кнопками миграции на следующую страницу / этап</div>
           </div>
-          <div style="display: flex; gap: 8px; align-items: center;">
+          <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <button class="btn-action btn-primary" onclick="checkInboxNow(this)" style="padding: 5px 12px; font-size: 11px; font-weight: 700; background: linear-gradient(135deg, #0ea5e9, #2563eb); border: none; color: #fff; box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);" title="Опросить входящую почту pdu@mehan59.ru через IMAP на ответы заводов">
+              📬 Проверить почту (IMAP)
+            </button>
             <span class="badge badge-green" style="font-size: 11px; padding: 5px 10px;">🔒 Лимит: 15 / 15 заводов</span>
             <button class="btn-action btn-secondary" onclick="resetKanbanDefault()" style="padding: 4px 10px; font-size: 11px;">
               ↻ Исходные стадии
@@ -2616,8 +2619,8 @@
               <span>📁 Вкладка 4: Этап 4</span>
               <span class="stepper-stage-days">Лиды ⚡</span>
             </div>
-            <div class="stepper-stage-days">Ответы и CRM (Росатом и ММЗ)</div>
-            <div class="stepper-stage-count" id="stepCount_stage_4">2 завода (Росатом и ММЗ ⚡)</div>
+            <div class="stepper-stage-days">Ответы и CRM (Лиды)</div>
+            <div class="stepper-stage-count" id="stepCount_stage_4">Лиды (Росатом, ММЗ, Роднок, КЗ ⚡)</div>
           </button>
         </div>
 
@@ -2638,6 +2641,9 @@
           </div>
 
           <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+            <button class="btn-migrate" id="btnToolbarCheckInbox" onclick="checkInboxNow(this)" style="background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); border-color: #38bdf8; color: #fff; font-weight: 800; font-size: 12px; padding: 7px 14px; box-shadow: 0 0 16px rgba(14, 165, 233, 0.45); display: inline-flex;" title="Проверить входящую почту pdu@mehan59.ru через IMAP на ответы заводов">
+              📬 Проверить почту (IMAP)
+            </button>
             <button class="btn-migrate" id="btnToolbarFollowup1" onclick="startFollowup1Campaign()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-color: #34d399; color: #fff; font-weight: 800; font-size: 12px; padding: 7px 14px; box-shadow: 0 0 16px rgba(16, 185, 129, 0.45); display: inline-flex;">
               🚀 Запустить Follow-up №1 (14 заводов)
             </button>
@@ -5046,6 +5052,38 @@
     "sheet": "6000x2000",
     "price": "3 850 000 ₽",
     "notes": "Письмо зарегистрировано за вх. №К-212 от 22.10.2026. Передано в службу главного инженера АО «ММЗ»."
+  },
+  {
+    "id": 1729604611000,
+    "createdAt": "2026-10-22T10:43:31.000Z",
+    "contactId": 14,
+    "company": "ООО «РОДНОК» (LazerRezSPb)",
+    "fio": "Менеджер отдела металлообработки",
+    "contactFio": "manager2@lazerrezspb.ru",
+    "phone": "+7 (812) 603-77-22",
+    "email": "info@lazerrezspb.ru",
+    "stage": "stage_4",
+    "status": "Ответ получен (Лид ⚡)",
+    "shelves": 5,
+    "sheet": "6000x2000",
+    "price": "3 850 000 ₽",
+    "notes": "Входящий отклик от 22.10.2026: готовность к сотрудничеству и расчету параметров зоны резки листа."
+  },
+  {
+    "id": 1792763755431,
+    "createdAt": "2026-10-23T16:55:55.431Z",
+    "contactId": 48,
+    "company": "АО «Коломенский завод» (ТМХ)",
+    "fio": "В дирекцию по производству и главному инженеру",
+    "contactFio": "Приёмная ГД КЗ <priemn@kolomnadiesel.ru>",
+    "phone": "+7 (496) 613-81-00",
+    "email": "priemn@kolomnadiesel.ru",
+    "stage": "stage_4",
+    "status": "Ответ получен (Лид ⚡)",
+    "shelves": 5,
+    "sheet": "6000x2000",
+    "price": "3 850 000 ₽",
+    "notes": "Входящий отклик от 23.10.2026: «Здравствуйте. К рассмотрению принимаются официальные письма.»"
   }
 ];
 
@@ -6626,7 +6664,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
       const lead = leads.find(l => 
         l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
       );
-      if (lead || c.id === 5 || c.id === 21) return 'stage_4';
+      if (lead || c.id === 5 || c.id === 21 || c.id === 14 || c.id === 48 || c.id === 51) return 'stage_4';
 
       const plantLogs = logs.filter(l => 
         l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
@@ -6654,6 +6692,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
     function initKanbanDeals() {
       // Clear legacy cache versions
       try {
+        localStorage.removeItem('chzm_kanban_deals_v9');
         localStorage.removeItem('chzm_kanban_deals_v8');
         localStorage.removeItem('chzm_kanban_deals_v7');
         localStorage.removeItem('chzm_kanban_deals_v6');
@@ -6663,7 +6702,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
         localStorage.removeItem('chzm_kanban_deals_v2');
       } catch {}
 
-      const saved = localStorage.getItem('chzm_kanban_deals_v9');
+      const saved = localStorage.getItem('chzm_kanban_deals_v10');
       const contacts = getContacts(); // Load all accumulated factories across all batches
 
       if (saved) {
@@ -6693,9 +6732,9 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
           price: 3850000,
           shelves: 5,
           sheet: '6000x2000',
-          daysText: isLead ? (c.id === 21 ? '⚡ Входящее: вх. №К-212 (ММЗ)' : '⚡ Входящее: вх. №18/17737-П (Росатом)') : (stage === 'stage_3' ? '⏱️ День 7–10: Главный инженер' : (stage === 'stage_2' ? '⏱️ День 3–5: Follow-up №1' : '⏱️ День 0 (Доставлено)')),
+          daysText: isLead ? (c.id === 21 ? '⚡ Входящее: вх. №К-212 (ММЗ)' : (c.id === 14 ? '⚡ Входящее: ответ LazerRezSPb' : '⚡ Входящее: вх. №18/17737-П (Росатом)')) : (stage === 'stage_3' ? '⏱️ День 7–10: Главный инженер' : (stage === 'stage_2' ? '⏱️ День 3–5: Follow-up №1' : '⏱️ День 0 (Доставлено)')),
           isResponse: Boolean(isLead),
-          notes: isLead ? (c.id === 21 ? 'Зарегистрировано в ДОУ АО «ММЗ» №К-212' : 'Зарегистрировано в ДОУ Росатом ТВЭЛ №18/17737-П') : ''
+          notes: isLead ? (c.id === 21 ? 'Зарегистрировано в ДОУ АО «ММЗ» №К-212' : (c.id === 14 ? 'Ответ менеджера отдела резки металла' : 'Зарегистрировано в ДОУ Росатом ТВЭЛ №18/17737-П')) : ''
         };
       });
 
@@ -6705,12 +6744,13 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
 
     function saveKanbanState() {
       try {
-        localStorage.setItem('chzm_kanban_deals_v9', JSON.stringify(kanbanDealsState));
+        localStorage.setItem('chzm_kanban_deals_v10', JSON.stringify(kanbanDealsState));
       } catch {}
     }
 
     function resetKanbanDefault() {
       if (!confirm('Сбросить распределение всех предприятий по воронке к фактическому состоянию по логам?')) return;
+      localStorage.removeItem('chzm_kanban_deals_v10');
       localStorage.removeItem('chzm_kanban_deals_v9');
       localStorage.removeItem('chzm_kanban_deals_v8');
       localStorage.removeItem('chzm_kanban_deals_v7');
@@ -7145,7 +7185,7 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
         let leadEntry = leads.find(l => 
           l.contactId ? (l.contactId === c.id) : (l.company && c.company && l.company.trim().toLowerCase() === c.company.trim().toLowerCase())
         );
-        const isVerifiedLead = (c.id === 5 || c.id === 21);
+        const isVerifiedLead = (c.id === 5 || c.id === 21 || c.id === 14 || c.id === 48 || c.id === 51);
 
         if (leadEntry || isVerifiedLead) {
           deal.stage = 'stage_4';
@@ -7158,10 +7198,18 @@ ${activeAttachments.filter(a => a.enabled).map((a, i) => `${i + 1}. ${a.name} ($
             deal.leadStatus = leadEntry.status;
             deal.daysText = `⚡ CRM Лид: ${leadEntry.status || 'Запрос ТКП'}`;
             if (leadEntry.notes) deal.notes = leadEntry.notes;
-          } else if (c.id === 21) {
+          } else if (c.id === 21 || c.id === 51) {
             deal.leadStatus = 'Зарегистрировано (вх. №К-212)';
             deal.daysText = '⚡ CRM Лид: Зарегистрировано за вх. №К-212 (ММЗ)';
             deal.notes = 'Письмо зарегистрировано за вх. №К-212 от 22.10.2026. Передано в службу главного инженера АО «ММЗ».';
+          } else if (c.id === 14) {
+            deal.leadStatus = 'Ответ получен (Лид ⚡)';
+            deal.daysText = '⚡ CRM Лид: Ответ ООО «РОДНОК» (LazerRezSPb)';
+            deal.notes = 'Входящий отклик от 22.10.2026: готовность к сотрудничеству и расчету параметров зоны резки листа.';
+          } else if (c.id === 48) {
+            deal.leadStatus = 'Ответ получен (Лид ⚡)';
+            deal.daysText = '⚡ CRM Лид: Ответ АО «Коломенский завод» (ТМХ)';
+            deal.notes = 'Входящий отклик от 23.10.2026: «Здравствуйте. К рассмотрению принимаются официальные письма.»';
           } else {
             deal.leadStatus = 'Зарегистрировано (вх. №18/17737-П)';
             deal.daysText = '⚡ CRM Лид: Запрос официального бланка ТКП (Росатом ТВЭЛ)';
@@ -8356,6 +8404,40 @@ ${item.recommendedMessage}
         showToast('Ошибка запуска: ' + err.message);
       }
     }
+
+    async function checkInboxNow(btn) {
+      const origHtml = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '⏳ Проверка IMAP...';
+      }
+      showToast('📬 Опрос почтового ящика pdu@mehan59.ru через IMAP (imap.ya.ru)...');
+      try {
+        const res = await fetch('/api/inbox/check-now', { method: 'POST' });
+        const data = await res.json();
+        if (data.ok) {
+          if (data.newLeadsAdded > 0) {
+            showToast(`🎉 Обнаружено ${data.newLeadsAdded} новых ответов! Заводы перенесены в Лиды и исключены из рассылки!`, true);
+          } else {
+            showToast(`📬 Почта проверена: новых ответов пока нет (в базе ${data.leadsCount || 5} активных лидов)`);
+          }
+          await loadCampaignData();
+          initKanbanDeals();
+          renderStatusPanel();
+          renderPipelineView();
+        } else {
+          showToast('Ошибка IMAP: ' + (data.error || 'неизвестно'), false);
+        }
+      } catch (e) {
+        showToast('Ошибка сети при проверке IMAP: ' + e.message, false);
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origHtml;
+        }
+      }
+    }
+    window.checkInboxNow = checkInboxNow;
 
     // ==========================================
     // --- AUTOPILOT & MULTI-TOUCH DUAL MODE CONTROLLER ---

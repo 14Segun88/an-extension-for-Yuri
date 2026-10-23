@@ -22,12 +22,16 @@ if os.path.exists(LEADS_PATH):
         with open(LEADS_PATH, "r", encoding="utf-8") as f:
             leads = json.load(f)
             for l in leads:
-                lead_ids.add(l.get("id"))
+                if l.get("contactId"):
+                    lead_ids.add(l.get("contactId"))
+                if l.get("id") and isinstance(l.get("id"), int) and l.get("id") < 1000:
+                    lead_ids.add(l.get("id"))
     except Exception as e:
         print("Warning reading leads:", e)
 
-# Также исключаем завод #5 гарантированно
+# Также исключаем заводы #5 (Росатом) и #21 (ММЗ) гарантированно
 lead_ids.add(5)
+lead_ids.add(21)
 
 eligible_plants = [p for p in full_dataset if p.get("id") not in lead_ids]
 print(f"Всего заводов для цепочки касаний: {len(eligible_plants)} (исключены лиды: {lead_ids})")
@@ -40,7 +44,15 @@ def create_touch_2(item):
     company = item["company"]
     salutation = item.get("salutation", "Здравствуйте!")
     subject = build_subject(item["subject"])
-    send_date_ref = "14 октября" if item.get("batch") == 1 else "18 октября"
+    batch = item.get("batch", 1)
+    if batch == 1:
+        send_date_ref = "14 октября"
+    elif batch == 2:
+        send_date_ref = "18 октября"
+    elif batch == 3:
+        send_date_ref = "20 октября"
+    else:
+        send_date_ref = "ранее"
     
     plain_text = f"""{salutation}
 

@@ -18,6 +18,8 @@ import {
 } from './ai_service.js';
 import { verifyPlantWebsite, verifyAllPlantWebsites } from './website_verifier.js';
 
+import { exec } from 'node:child_process';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, '.env') });
 
@@ -44,6 +46,7 @@ const FOLLOWUP_DATASET_PATHS = {
 const AUTOPILOT_CONFIG_PATH = path.resolve(__dirname, '../../campaign_emails/autopilot_config.json');
 const LOG_PATH = path.resolve(__dirname, '../../campaign_emails/dispatch_log.json');
 const LEADS_PATH = path.resolve(__dirname, '../../campaign_emails/leads.json');
+const BOUNCED_PATH = path.resolve(__dirname, '../../campaign_emails/bounced_emails.json');
 const ATTACHMENT_DIR = path.resolve(__dirname, '../../Вложения');
 
 // Campaign queue state (Initial Offer)
@@ -358,6 +361,16 @@ function evaluatePipeline() {
   });
   leadIds.add(5); // Plant #5 Rosatom Elemash is won lead
   leadIds.add(21); // Plant #21 MMZ is registered lead
+  leadIds.add(14); // Plant #14 LazerRez is replied lead
+
+  if (fs.existsSync(BOUNCED_PATH)) {
+    try {
+      const bounced = JSON.parse(fs.readFileSync(BOUNCED_PATH, 'utf-8'));
+      bounced.forEach(b => {
+        if (b.plantId) leadIds.add(b.plantId);
+      });
+    } catch {}
+  }
 
   const now = new Date();
 
@@ -469,8 +482,23 @@ async function runFollowupCycle() {
   const dataset = loadTouchDataset(touch);
   const log = loadLog();
   const leads = loadLeads();
-  const leadIds = new Set(leads.map(l => l.id));
-  leadIds.add(5); // Rosatom Elemarsh is permanently won lead
+  const leadIds = new Set();
+  leads.forEach(l => {
+    if (l.contactId) leadIds.add(l.contactId);
+    if (l.id && typeof l.id === 'number' && l.id < 1000) leadIds.add(l.id);
+  });
+  leadIds.add(5); // Rosatom Elemash
+  leadIds.add(21); // MMZ
+  leadIds.add(14); // LazerRez
+
+  if (fs.existsSync(BOUNCED_PATH)) {
+    try {
+      const bounced = JSON.parse(fs.readFileSync(BOUNCED_PATH, 'utf-8'));
+      bounced.forEach(b => {
+        if (b.plantId) leadIds.add(b.plantId);
+      });
+    } catch {}
+  }
 
   const sentIds = new Set(
     log.filter(l => l.status === 'SENT' && (l.stage === stageName || l.touchNumber === touch)).map(l => l.contactId)
@@ -593,8 +621,31 @@ async function checkAutopilotTick() {
   }
 }
 
-// Start Background Autopilot Ticker
+// Start Background Autopilot Ticker (Every 30 seconds)
 setInterval(checkAutopilotTick, 30000);
+
+// Background IMAP Inbox Monitor (Every 60 seconds)
+let lastInboxCheckResult = null;
+function runInboxMonitor() {
+  const scriptPath = path.resolve(__dirname, 'inbox_monitor.py');
+  exec(`python3 "${scriptPath}"`, (err, stdout, stderr) => {
+    if (err) {
+      console.error('[IMAP Monitor Error]:', err.message);
+      return;
+    }
+    try {
+      const res = JSON.parse(stdout);
+      lastInboxCheckResult = res;
+      if (res.newLeadsAdded > 0) {
+        console.log(`[IMAP Monitor] 🎯 Обнаружено ${res.newLeadsAdded} новых ответов от предприятий! Заводы автоматически перенесены на Вкладку 4 (Лиды ⚡) и исключены из фолоу-ап!`);
+      }
+    } catch {}
+  });
+}
+
+// Start Background Inbox Monitor (every 60s, first run in 5s)
+setTimeout(runInboxMonitor, 5000);
+setInterval(runInboxMonitor, 60000);
 
 // HTTP Server
 const server = http.createServer(async (req, res) => {
@@ -923,6 +974,34 @@ const server = http.createServer(async (req, res) => {
         config: autopilotConfig,
         pipeline: evalAfter,
         followupState,
+      });
+      return;
+    }
+
+    // --- API: Check IMAP Inbox Now for Factory Replies ---
+    if ((url.pathname === '/api/inbox/check-now' || url.pathname === '/api/inbox/check') && (req.method === 'POST' || req.method === 'GET')) {
+      const scriptPath = path.resolve(__dirname, 'inbox_monitor.py');
+      exec(`python3 "${scriptPath}"`, (err, stdout, stderr) => {
+        if (err) {
+          json(res, 500, { ok: false, error: err.message });
+          return;
+        }
+        try {
+          const parsed = JSON.parse(stdout);
+          lastInboxCheckResult = parsed;
+          json(res, 200, parsed);
+        } catch (e) {
+          json(res, 200, { ok: true, raw: stdout });
+        }
+      });
+      return;
+    }
+
+    // --- API: Get Inbox Monitor Status ---
+    if (url.pathname === '/api/inbox/status' && req.method === 'GET') {
+      json(res, 200, {
+        ok: true,
+        lastResult: lastInboxCheckResult,
       });
       return;
     }
